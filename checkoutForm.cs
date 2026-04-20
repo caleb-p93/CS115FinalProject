@@ -1,7 +1,5 @@
 using System;                                      // using System namespace
 using System.Collections.Generic;                  // using generic collections
-using System.IO;                                   // using IO namespace
-using System.Text;                                 // using StringBuilder
 using System.Windows.Forms;                        // using Windows Forms namespace
 
 namespace DeliciosoERistorante                     // project namespace
@@ -21,10 +19,10 @@ namespace DeliciosoERistorante                     // project namespace
         public CheckoutForm(List<OrderItem> order) // constructor
         {
             InitializeComponent();                 // initialize form components
-            this.WindowState = FormWindowState.Maximized;   // maximize form
+            this.WindowState = FormWindowState.Maximized;   // maximize form window
             orderList = order;                     // assign order list
-            CalculateSubtotal();                   // call method to calculate subtotal
-            DisplayInitialTotals();                // call method to display initial totals
+            CalculateSubtotal();                   // calculate subtotal
+            DisplayInitialTotals();                // display initial totals
         }
 
         private void CalculateSubtotal()           // method to calculate subtotal
@@ -44,18 +42,16 @@ namespace DeliciosoERistorante                     // project namespace
             lblTotalBeforeTip.Text = "";          // clear total before tip label
             lblTipAmount.Text = "";               // clear tip label
             lblGrandTotal.Text = "";              // clear grand total label
-            txtReceipt.Clear();                   // clear receipt textbox
         }
 
         private void btnRequestCheck_Click(object sender, EventArgs e)   // request check click event
         {
             try                                     // try block
             {
-                CalculateTax();                     // call method to calculate tax
-                CalculateTip();                     // call method to calculate tip
-                CalculateGrandTotal();              // call method to calculate grand total
-                DisplayTotals();                    // call method to display totals
-                BuildReceiptPreview();              // call method to build receipt preview
+                CalculateTax();                     // calculate tax
+                CalculateTip();                     // calculate tip
+                CalculateGrandTotal();              // calculate grand total
+                DisplayTotals();                    // display totals
             }
             catch (Exception ex)                    // catch block
             {
@@ -105,59 +101,42 @@ namespace DeliciosoERistorante                     // project namespace
             lblGrandTotal.Text = grandTotal.ToString("C"); // display grand total
         }
 
-        private void BuildReceiptPreview()         // method to build receipt preview
-        {
-            StringBuilder receipt = new StringBuilder();   // create StringBuilder
-
-            receipt.AppendLine("----- Delicioso E‑Ristorante -----");   // header
-            receipt.AppendLine($"Date/Time: {DateTime.Now}");           // date and time
-            receipt.AppendLine("");                                     // blank line
-            receipt.AppendLine("Items Ordered:");                       // items header
-
-            foreach (OrderItem item in orderList)                       // loop through items
-            {
-                receipt.AppendLine($"{item.Name} x{item.Quantity} @ {item.UnitPrice:C} = {item.LineTotal():C}");   // item line
-            }
-
-            receipt.AppendLine("----------------------------------");   // divider
-            receipt.AppendLine("Subtotal: " + subtotal.ToString("C"));  // subtotal line
-            receipt.AppendLine("Tax (9.5%): " + taxAmount.ToString("C"));   // tax line
-            receipt.AppendLine("Total Before Tip: " + totalBeforeTip.ToString("C"));   // total before tip line
-            receipt.AppendLine("Tip: " + tipAmount.ToString("C"));      // tip line
-            receipt.AppendLine("Grand Total: " + grandTotal.ToString("C"));   // grand total line
-
-            txtReceipt.Text = receipt.ToString();                       // display receipt preview
-        }
-
         private void btnPay_Click(object sender, EventArgs e)           // pay button click event
         {
             try                                                         // try block
             {
-                if (!ValidateBeforePayment())                           // call method to validate before payment
+                if (!ValidateBeforePayment())                           // validate before payment
                 {
                     return;                                             // exit if invalid
                 }
 
                 string customerName = txtCustomerName.Text.Trim();      // get customer name
-                string paymentMethod = GetSelectedPaymentMethod();      // call method to get payment method
+                string paymentMethod = GetSelectedPaymentMethod();      // get payment method
 
-                if (!ValidatePaymentDetails(paymentMethod))             // call method to validate payment details
+                if (!ValidatePaymentDetails(paymentMethod))             // validate payment details
                 {
                     return;                                             // exit if invalid
                 }
 
-                ShowPaymentMessage(paymentMethod);                      // call method to show payment message
+                ShowPaymentMessage(paymentMethod);                      // show payment message
 
-                int currentReceiptNumber = receiptCounter;              // get current receipt number
+                int currentReceiptNumber = receiptCounter;              // store current receipt number
                 receiptCounter++;                                       // increment receipt counter
 
-                string finalReceipt = BuildFinalReceipt(currentReceiptNumber, customerName, paymentMethod);   // call method to build final receipt
+                ReceiptForm receiptForm = new ReceiptForm(              // create receipt form
+                    currentReceiptNumber,                               // pass receipt number
+                    customerName,                                       // pass customer name
+                    paymentMethod,                                      // pass payment method
+                    orderList,                                          // pass order list
+                    subtotal,                                           // pass subtotal
+                    taxAmount,                                          // pass tax amount
+                    totalBeforeTip,                                     // pass total before tip
+                    tipAmount,                                          // pass tip amount
+                    grandTotal                                          // pass grand total
+                );
 
-                txtReceipt.Text = finalReceipt;                         // display final receipt
-
-                SaveReceiptToFile(currentReceiptNumber, finalReceipt);  // call method to save receipt
-
-                ResetForNewGuest();                                     // call method to reset for new guest
+                receiptForm.Show();                                     // show receipt form
+                this.Hide();                                            // hide checkout form
             }
             catch (Exception ex)                                        // catch block
             {
@@ -261,64 +240,6 @@ namespace DeliciosoERistorante                     // project namespace
                     MessageBox.Show("Your credit card will be processed electronically.");   // message
                     break;                                              // break
             }
-        }
-
-        private string BuildFinalReceipt(int receiptNumber, string customerName, string paymentMethod)   // method to build final receipt
-        {
-            StringBuilder receipt = new StringBuilder();               // create StringBuilder
-
-            receipt.AppendLine("----- Delicioso E‑Ristorante -----");  // header
-            receipt.AppendLine($"Receipt Number: {receiptNumber}");    // receipt number
-            receipt.AppendLine($"Customer Name: {customerName}");      // customer name
-            receipt.AppendLine($"Date/Time: {DateTime.Now}");          // date and time
-            receipt.AppendLine($"Payment Method: {paymentMethod}");    // payment method
-            receipt.AppendLine("");                                    // blank line
-            receipt.AppendLine("Items Ordered:");                      // items header
-
-            foreach (OrderItem item in orderList)                      // loop through items
-            {
-                receipt.AppendLine($"{item.Name} x{item.Quantity} @ {item.UnitPrice:C} = {item.LineTotal():C}");   // item line
-            }
-
-            receipt.AppendLine("----------------------------------");   // divider
-            receipt.AppendLine("Subtotal: " + subtotal.ToString("C")); // subtotal line
-            receipt.AppendLine("Tax (9.5%): " + taxAmount.ToString("C"));   // tax line
-            receipt.AppendLine("Total Before Tip: " + totalBeforeTip.ToString("C"));   // total before tip line
-            receipt.AppendLine("Tip: " + tipAmount.ToString("C"));     // tip line
-            receipt.AppendLine("Grand Total: " + grandTotal.ToString("C"));   // grand total line
-            receipt.AppendLine("----------------------------------");   // divider
-            receipt.AppendLine("Thank you for dining with us!");       // thank you line
-
-            return receipt.ToString();                                 // return receipt string
-        }
-
-        private void SaveReceiptToFile(int receiptNumber, string receiptText)   // method to save receipt to file
-        {
-            string fileName = $"Receipt_{receiptNumber}.txt";          // file name
-            File.WriteAllText(fileName, receiptText);                  // write file
-        }
-
-        private void ResetForNewGuest()                                // method to reset for new guest
-        {
-            subtotal = 0;                                              // reset subtotal
-            taxAmount = 0;                                             // reset tax
-            totalBeforeTip = 0;                                        // reset total before tip
-            tipAmount = 0;                                             // reset tip
-            grandTotal = 0;                                            // reset grand total
-
-            txtCustomerName.Clear();                                   // clear customer name
-            txtTip.Clear();                                            // clear tip
-            txtCardNumber.Clear();                                     // clear card number
-            txtExpiration.Clear();                                     // clear expiration
-            txtPin.Clear();                                            // clear pin
-
-            rbCash.Checked = false;                                    // uncheck cash
-            rbDebit.Checked = false;                                   // uncheck debit
-            rbCredit.Checked = false;                                  // uncheck credit
-
-            MenuForm menu = new MenuForm();                            // create new menu form
-            menu.Show();                                               // show menu form
-            this.Hide();                                               // hide checkout form
         }
     }
 }

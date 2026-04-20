@@ -43,10 +43,10 @@ namespace DeliciosoERistorante                     // project namespace
         public MenuForm()                          // constructor
         {
             InitializeComponent();                 // initialize form components
-            this.WindowState = FormWindowState.Maximized;   // maximize form
-            InitializeOrderList();                 // call method to initialize order list
-            InitializePrices();                    // call method to initialize prices
-            LoadCategories();                      // call method to load categories
+            this.WindowState = FormWindowState.Maximized;   // maximize form window
+            InitializeOrderList();                 // initialize order list
+            InitializePrices();                    // initialize prices
+            LoadCategories();                      // load menu categories
         }
 
         private void InitializeOrderList()         // method to initialize order list
@@ -76,7 +76,7 @@ namespace DeliciosoERistorante                     // project namespace
 
         private void LoadCategories()              // method to load categories
         {
-            cmbCategory.Items.Clear();             // clear combo box
+            cmbCategory.Items.Clear();             // clear category combo box
             cmbCategory.Items.Add("Main Dishes");  // add main dishes category
             cmbCategory.Items.Add("Salads");       // add salads category
             cmbCategory.Items.Add("Beverages");    // add beverages category
@@ -86,7 +86,7 @@ namespace DeliciosoERistorante                     // project namespace
 
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)   // category changed event
         {
-            LoadMenuItems();                       // call method to load menu items
+            LoadMenuItems();                       // load menu items for category
         }
 
         private void LoadMenuItems()               // method to load menu items
@@ -98,19 +98,19 @@ namespace DeliciosoERistorante                     // project namespace
             switch (category)                      // switch on category
             {
                 case "Main Dishes":                // main dishes case
-                    AddItemsToMenu(mainDishes);    // call method to add items
+                    AddItemsToMenu(mainDishes);    // add main dishes
                     break;                         // break
 
                 case "Salads":                     // salads case
-                    AddItemsToMenu(salads);        // call method to add items
+                    AddItemsToMenu(salads);        // add salads
                     break;                         // break
 
                 case "Beverages":                  // beverages case
-                    AddItemsToMenu(beverages);     // call method to add items
+                    AddItemsToMenu(beverages);     // add beverages
                     break;                         // break
 
                 case "Desserts":                   // desserts case
-                    AddItemsToMenu(desserts);      // call method to add items
+                    AddItemsToMenu(desserts);      // add desserts
                     break;                         // break
             }
         }
@@ -127,7 +127,7 @@ namespace DeliciosoERistorante                     // project namespace
         {
             try                                     // try block
             {
-                string itemName = GetSelectedMenuItem();   // call method to get selected item
+                string itemName = GetSelectedMenuItem();   // get selected item
 
                 if (itemName == null)               // check if no item selected
                 {
@@ -135,7 +135,7 @@ namespace DeliciosoERistorante                     // project namespace
                     return;                          // exit method
                 }
 
-                int quantity = GetSelectedQuantity();   // call method to get quantity
+                int quantity = GetSelectedQuantity();   // get selected quantity
 
                 if (quantity <= 0)                   // check quantity
                 {
@@ -143,8 +143,8 @@ namespace DeliciosoERistorante                     // project namespace
                     return;                          // exit method
                 }
 
-                AddItemToOrder(itemName, quantity);  // call method to add item to order
-                RefreshOrderListBox();               // call method to refresh order listbox
+                AddItemToOrder(itemName, quantity);  // add item to order
+                RefreshOrderListBox();               // refresh order listbox
             }
             catch (Exception ex)                     // catch block
             {
@@ -164,11 +164,11 @@ namespace DeliciosoERistorante                     // project namespace
 
         private void AddItemToOrder(string itemName, int quantity)   // method to add item to order
         {
-            OrderItem existingItem = FindOrderItem(itemName);   // call method to find existing item
+            OrderItem existingItem = FindOrderItem(itemName);   // find existing item
 
             if (existingItem != null)              // check if item already exists
             {
-                IncreaseQuantity(ref existingItem.Quantity, quantity);   // call method to increase quantity
+                IncreaseQuantity(ref existingItem.Quantity, quantity);   // increase quantity
             }
             else                                   // otherwise
             {
