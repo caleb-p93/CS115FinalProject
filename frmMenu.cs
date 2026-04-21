@@ -4,7 +4,7 @@ using System.Windows.Forms;                        // using Windows Forms namesp
 
 namespace DeliciosoERistorante                     // project namespace
 {
-    public partial class MenuForm : Form           // MenuForm class
+    public partial class frmMenu : Form           // frmMenu class
     {
         private List<OrderItem> orderList;         // list to store order items
 
@@ -40,7 +40,7 @@ namespace DeliciosoERistorante                     // project namespace
 
         private Dictionary<string, double> prices; // dictionary of item prices
 
-        public MenuForm()                          // constructor
+        public frmMenu()                          // constructor
         {
             InitializeComponent();                 // initialize form components
             this.WindowState = FormWindowState.Maximized;   // maximize form window
@@ -227,7 +227,7 @@ namespace DeliciosoERistorante                     // project namespace
                 return;                            // exit method
             }
 
-            CheckoutForm checkout = new CheckoutForm(orderList);   // create checkout form
+            frmCheckout checkout = new frmCheckout(orderList);   // create checkout form
             checkout.Show();                       // show checkout form
             this.Hide();                           // hide menu form
         }

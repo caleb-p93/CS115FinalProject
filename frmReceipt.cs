@@ -6,7 +6,7 @@ using System.Windows.Forms;                        // using Windows Forms namesp
 
 namespace DeliciosoERistorante                     // project namespace
 {
-    public partial class ReceiptForm : Form        // ReceiptForm class
+    public partial class frmReceipt : Form        // frmReceipt class
     {
         private int receiptNumber;                 // receipt number field
         private string customerName;               // customer name field
@@ -18,7 +18,7 @@ namespace DeliciosoERistorante                     // project namespace
         private double tipAmount;                  // tip amount field
         private double grandTotal;                 // grand total field
 
-        public ReceiptForm(int receiptNumber, string customerName, string paymentMethod,
+        public frmReceipt(int receiptNumber, string customerName, string paymentMethod,
                            List<OrderItem> orderList, double subtotal, double taxAmount,
                            double totalBeforeTip, double tipAmount, double grandTotal)   // constructor
         {

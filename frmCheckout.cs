@@ -4,7 +4,7 @@ using System.Windows.Forms;                        // using Windows Forms namesp
 
 namespace DeliciosoERistorante                     // project namespace
 {
-    public partial class CheckoutForm : Form       // CheckoutForm class
+    public partial class frmCheckout : Form       // frmCheckout class
     {
         private List<OrderItem> orderList;         // list of ordered items
         private const double TaxRate = 0.095;      // constant tax rate
@@ -16,7 +16,7 @@ namespace DeliciosoERistorante                     // project namespace
         private double tipAmount;                  // tip amount field
         private double grandTotal;                 // grand total field
 
-        public CheckoutForm(List<OrderItem> order) // constructor
+        public frmCheckout(List<OrderItem> order) // constructor
         {
             InitializeComponent();                 // initialize form components
             this.WindowState = FormWindowState.Maximized;   // maximize form window
@@ -123,7 +123,7 @@ namespace DeliciosoERistorante                     // project namespace
                 int currentReceiptNumber = receiptCounter;              // store current receipt number
                 receiptCounter++;                                       // increment receipt counter
 
-                ReceiptForm receiptForm = new ReceiptForm(              // create receipt form
+                frmReceipt receiptForm = new frmReceipt(              // create receipt form
                     currentReceiptNumber,                               // pass receipt number
                     customerName,                                       // pass customer name
                     paymentMethod,                                      // pass payment method

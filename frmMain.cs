@@ -18,12 +18,12 @@ namespace DeliciosoERistorante                     // project namespace
 
         private void btnEnter_Click(object sender, EventArgs e)   // enter button click event
         {
-            OpenMenuForm();                        // call method to open menu form
+            OpenfrmMenu();                        // call method to open menu form
         }
 
-        private void OpenMenuForm()                // method to open menu form
+        private void OpenfrmMenu()                // method to open menu form
         {
-            MenuForm menu = new MenuForm();        // create new instance of MenuForm
+            frmMenu menu = new frmMenu();        // create new instance of frmMenu
             menu.Show();                           // show menu form
             this.Hide();                           // hide splash form
         }
