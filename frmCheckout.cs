@@ -2,7 +2,7 @@ using System;                                      // using System namespace
 using System.Collections.Generic;                  // using generic collections
 using System.Windows.Forms;                        // using Windows Forms namespace
 
-namespace FinalProject                              // project namespace
+namespace DeliciosoERistorante                     // project namespace
 {
     public partial class frmCheckout : Form        // frmCheckout class
     {
