@@ -2,9 +2,9 @@ using System;                                      // using System namespace
 using System.Collections.Generic;                  // using generic collections
 using System.Windows.Forms;                        // using Windows Forms namespace
 
-namespace DeliciosoERistorante                     // project namespace
+namespace FinalProject                              // project namespace
 {
-    public partial class frmCheckout : Form       // frmCheckout class
+    public partial class frmCheckout : Form        // frmCheckout class
     {
         private List<OrderItem> orderList;         // list of ordered items
         private const double TaxRate = 0.095;      // constant tax rate
@@ -16,35 +16,44 @@ namespace DeliciosoERistorante                     // project namespace
         private double tipAmount;                  // tip amount field
         private double grandTotal;                 // grand total field
 
-        public frmCheckout(List<OrderItem> order) // constructor
+        public frmCheckout(List<OrderItem> order)  // constructor
         {
             InitializeComponent();                 // initialize form components
-            this.WindowState = FormWindowState.Maximized;   // maximize form window
+            this.WindowState = FormWindowState.Maximized;   // maximize window
             orderList = order;                     // assign order list
             CalculateSubtotal();                   // calculate subtotal
             DisplayInitialTotals();                // display initial totals
+            LoadItemizedBill();                    // load itemized bill list
+        }
+
+        private void LoadItemizedBill()            // method to load itemized bill
+        {
+            lstItemizedBill.Items.Clear();         // clear listbox
+
+            foreach (OrderItem item in orderList)  // loop through items
+            {
+                lstItemizedBill.Items.Add(item.ToString());   // add item to listbox
+            }
         }
 
         private void CalculateSubtotal()           // method to calculate subtotal
         {
             subtotal = 0;                          // reset subtotal
 
-            foreach (OrderItem item in orderList)  // loop through order items
+            foreach (OrderItem item in orderList)  // loop through items
             {
-                subtotal += item.LineTotal();      // add line total to subtotal
+                subtotal += item.LineTotal();      // add line total
             }
         }
 
         private void DisplayInitialTotals()        // method to display initial totals
         {
-            lblSubtotal.Text = subtotal.ToString("C");   // display subtotal
-            lblTax.Text = "";                     // clear tax label
-            lblTotalBeforeTip.Text = "";          // clear total before tip label
-            lblTipAmount.Text = "";               // clear tip label
-            lblGrandTotal.Text = "";              // clear grand total label
+            txtSubtotal.Text = subtotal.ToString("C");   // display subtotal
+            txtTax.Text = "";                     // clear tax textbox
+            txtTotal.Text = "";                   // clear total textbox
         }
 
-        private void btnRequestCheck_Click(object sender, EventArgs e)   // request check click event
+        private void btnCalcTotal_Click(object sender, EventArgs e)   // calculate total click
         {
             try                                     // try block
             {
@@ -55,14 +64,14 @@ namespace DeliciosoERistorante                     // project namespace
             }
             catch (Exception ex)                    // catch block
             {
-                MessageBox.Show("Error calculating check: " + ex.Message);   // show error message
+                MessageBox.Show("Error calculating total: " + ex.Message);   // show error
             }
         }
 
         private void CalculateTax()                // method to calculate tax
         {
-            taxAmount = subtotal * TaxRate;        // calculate tax amount
-            totalBeforeTip = subtotal + taxAmount; // calculate total before tip
+            taxAmount = subtotal * TaxRate;        // compute tax
+            totalBeforeTip = subtotal + taxAmount; // compute total before tip
         }
 
         private void CalculateTip()                // method to calculate tip
@@ -73,172 +82,158 @@ namespace DeliciosoERistorante                     // project namespace
             {
                 if (!double.TryParse(txtTip.Text, out tipPercent))   // try parse tip
                 {
-                    MessageBox.Show("Please enter a valid numeric tip percentage.");   // show message
+                    MessageBox.Show("Please enter a valid numeric tip percentage.");   // show error
                     return;                        // exit method
                 }
 
                 if (tipPercent < 0)                // check negative tip
                 {
-                    MessageBox.Show("Tip percentage cannot be negative.");   // show message
+                    MessageBox.Show("Tip percentage cannot be negative.");   // show error
                     return;                        // exit method
                 }
             }
 
-            tipPercent = tipPercent / 100.0;       // convert percent to decimal
-            tipAmount = totalBeforeTip * tipPercent;   // calculate tip amount
+            tipPercent /= 100.0;                   // convert percent to decimal
+            tipAmount = totalBeforeTip * tipPercent;   // compute tip amount
         }
 
         private void CalculateGrandTotal()         // method to calculate grand total
         {
-            grandTotal = totalBeforeTip + tipAmount;   // calculate grand total
+            grandTotal = totalBeforeTip + tipAmount;   // compute grand total
         }
 
         private void DisplayTotals()               // method to display totals
         {
-            lblTax.Text = taxAmount.ToString("C");         // display tax
-            lblTotalBeforeTip.Text = totalBeforeTip.ToString("C");   // display total before tip
-            lblTipAmount.Text = tipAmount.ToString("C");   // display tip
-            lblGrandTotal.Text = grandTotal.ToString("C"); // display grand total
+            txtTax.Text = taxAmount.ToString("C");         // display tax
+            txtTotal.Text = grandTotal.ToString("C");      // display grand total
         }
 
-        private void btnPay_Click(object sender, EventArgs e)           // pay button click event
+        private void btnPayment_Click(object sender, EventArgs e)   // payment click event
         {
-            try                                                         // try block
+            try                                             // try block
             {
-                if (!ValidateBeforePayment())                           // validate before payment
-                {
-                    return;                                             // exit if invalid
-                }
+                if (!ValidateBeforePayment())               // validate before payment
+                    return;                                 // exit if invalid
 
-                string customerName = txtCustomerName.Text.Trim();      // get customer name
-                string paymentMethod = GetSelectedPaymentMethod();      // get payment method
+                string customerName = txtCustName.Text.Trim();   // get customer name
+                string paymentMethod = GetSelectedPaymentMethod();   // get payment method
 
-                if (!ValidatePaymentDetails(paymentMethod))             // validate payment details
-                {
-                    return;                                             // exit if invalid
-                }
+                if (!ValidatePaymentDetails(paymentMethod))   // validate payment details
+                    return;                                   // exit if invalid
 
-                ShowPaymentMessage(paymentMethod);                      // show payment message
+                ShowPaymentMessage(paymentMethod);            // show payment message
 
-                int currentReceiptNumber = receiptCounter;              // store current receipt number
-                receiptCounter++;                                       // increment receipt counter
+                int currentReceiptNumber = receiptCounter;    // store receipt number
+                receiptCounter++;                             // increment counter
 
-                frmReceipt receiptForm = new frmReceipt(              // create receipt form
-                    currentReceiptNumber,                               // pass receipt number
-                    customerName,                                       // pass customer name
-                    paymentMethod,                                      // pass payment method
-                    orderList,                                          // pass order list
-                    subtotal,                                           // pass subtotal
-                    taxAmount,                                          // pass tax amount
-                    totalBeforeTip,                                     // pass total before tip
-                    tipAmount,                                          // pass tip amount
-                    grandTotal                                          // pass grand total
+                frmReceipt receiptForm = new frmReceipt(      // create receipt form
+                    currentReceiptNumber,                     // pass receipt number
+                    customerName,                             // pass customer name
+                    paymentMethod,                            // pass payment method
+                    orderList,                                // pass order list
+                    subtotal,                                 // pass subtotal
+                    taxAmount,                                // pass tax amount
+                    totalBeforeTip,                           // pass total before tip
+                    tipAmount,                                // pass tip amount
+                    grandTotal                                // pass grand total
                 );
 
-                receiptForm.Show();                                     // show receipt form
-                this.Hide();                                            // hide checkout form
+                receiptForm.Show();                           // show receipt form
+                this.Hide();                                  // hide checkout form
             }
-            catch (Exception ex)                                        // catch block
+            catch (Exception ex)                              // catch block
             {
-                MessageBox.Show("Error processing payment: " + ex.Message);   // show error message
+                MessageBox.Show("Error processing payment: " + ex.Message);   // show error
             }
         }
 
-        private bool ValidateBeforePayment()                            // method to validate before payment
+        private bool ValidateBeforePayment()                  // validate before payment
         {
-            if (orderList.Count == 0)                                   // check empty order
+            if (orderList.Count == 0)                         // check empty order
             {
-                MessageBox.Show("No items in the order.");              // show message
-                return false;                                           // return false
+                MessageBox.Show("No items in the order.");    // show error
+                return false;                                 // return false
             }
 
-            if (grandTotal <= 0)                                        // check if check requested
+            if (grandTotal <= 0)                              // check if total calculated
             {
-                MessageBox.Show("Please request the check before paying.");   // show message
-                return false;                                           // return false
+                MessageBox.Show("Please calculate the total before paying.");   // show error
+                return false;                                 // return false
             }
 
-            if (string.IsNullOrWhiteSpace(txtCustomerName.Text))        // check customer name
+            if (string.IsNullOrWhiteSpace(txtCustName.Text))  // check customer name
             {
-                MessageBox.Show("Please enter the customer name.");     // show message
-                return false;                                           // return false
+                MessageBox.Show("Please enter the customer name.");   // show error
+                return false;                                 // return false
             }
 
-            return true;                                                // return true
+            return true;                                      // return true
         }
 
-        private string GetSelectedPaymentMethod()                       // method to get payment method
+        private string GetSelectedPaymentMethod()             // get payment method
         {
-            if (rbCash.Checked)                                         // cash selected
-            {
-                return "Cash";                                          // return cash
-            }
+            if (radCash.Checked)                              // cash selected
+                return "Cash";                                // return cash
 
-            if (rbDebit.Checked)                                        // debit selected
-            {
-                return "Debit Card";                                    // return debit
-            }
+            if (radDebitCard.Checked)                         // debit selected
+                return "Debit Card";                          // return debit
 
-            if (rbCredit.Checked)                                       // credit selected
-            {
-                return "Credit Card";                                   // return credit
-            }
+            if (radCreditCard.Checked)                        // credit selected
+                return "Credit Card";                         // return credit
 
-            return null;                                                // return null if none selected
+            return null;                                      // return null if none selected
         }
 
-        private bool ValidatePaymentDetails(string paymentMethod)       // method to validate payment details
+        private bool ValidatePaymentDetails(string paymentMethod)   // validate payment details
         {
-            if (paymentMethod == null)                                  // check null
+            if (paymentMethod == null)                        // check null
             {
-                MessageBox.Show("Please select a method of payment.");  // show message
-                return false;                                           // return false
+                MessageBox.Show("Please select a method of payment.");   // show error
+                return false;                                 // return false
             }
 
-            if (paymentMethod == "Cash")                                // cash case
+            if (paymentMethod == "Cash")                      // cash case
+                return true;                                  // no details needed
+
+            if (string.IsNullOrWhiteSpace(txtCardNumber.Text))   // check card number
             {
-                return true;                                            // no details needed
+                MessageBox.Show("Please enter the card number.");   // show error
+                return false;                                 // return false
             }
 
-            if (string.IsNullOrWhiteSpace(txtCardNumber.Text))          // check card number
+            if (string.IsNullOrWhiteSpace(txtExpireDate.Text))   // check expiration
             {
-                MessageBox.Show("Please enter the card number.");       // show message
-                return false;                                           // return false
+                MessageBox.Show("Please enter the expiration date.");   // show error
+                return false;                                 // return false
             }
 
-            if (string.IsNullOrWhiteSpace(txtExpiration.Text))          // check expiration
+            if (paymentMethod == "Debit Card")                // debit case
             {
-                MessageBox.Show("Please enter the expiration date.");   // show message
-                return false;                                           // return false
-            }
-
-            if (paymentMethod == "Debit Card")                          // debit case
-            {
-                if (string.IsNullOrWhiteSpace(txtPin.Text))             // check pin
+                if (string.IsNullOrWhiteSpace(txtPin.Text))   // check pin
                 {
-                    MessageBox.Show("Please enter the PIN.");           // show message
-                    return false;                                       // return false
+                    MessageBox.Show("Please enter the PIN.");   // show error
+                    return false;                             // return false
                 }
             }
 
-            return true;                                                // return true
+            return true;                                      // return true
         }
 
-        private void ShowPaymentMessage(string paymentMethod)           // method to show payment message
+        private void ShowPaymentMessage(string paymentMethod) // show payment message
         {
-            switch (paymentMethod)                                      // switch on payment method
+            switch (paymentMethod)                            // switch on method
             {
-                case "Cash":                                            // cash case
+                case "Cash":                                  // cash case
                     MessageBox.Show("Please wait for the waiter to collect the cash at the table.");   // message
-                    break;                                              // break
+                    break;                                    // break
 
-                case "Debit Card":                                      // debit case
+                case "Debit Card":                            // debit case
                     MessageBox.Show("Your debit card will be processed electronically.");   // message
-                    break;                                              // break
+                    break;                                    // break
 
-                case "Credit Card":                                     // credit case
+                case "Credit Card":                           // credit case
                     MessageBox.Show("Your credit card will be processed electronically.");   // message
-                    break;                                              // break
+                    break;                                    // break
             }
         }
     }
