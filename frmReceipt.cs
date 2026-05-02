@@ -1,12 +1,11 @@
 using System;                                      // using System namespace
 using System.Collections.Generic;                  // using generic collections
 using System.IO;                                   // using IO namespace
-using System.Text;                                 // using StringBuilder
 using System.Windows.Forms;                        // using Windows Forms namespace
 
-namespace DeliciosoERistorante                     // project namespace
+namespace FinalProject                              // corrected project namespace
 {
-    public partial class frmReceipt : Form        // frmReceipt class
+    public partial class frmReceipt : Form         // corrected class name
     {
         private int receiptNumber;                 // receipt number field
         private string customerName;               // customer name field
@@ -35,59 +34,74 @@ namespace DeliciosoERistorante                     // project namespace
             this.tipAmount = tipAmount;            // assign tip amount
             this.grandTotal = grandTotal;          // assign grand total
 
-            DisplayReceipt();                      // call method to display receipt
+            btnSaveReceipt.Click += btnSaveReceipt_Click;   // wire save receipt button
+
+            DisplayReceipt();                      // display receipt details
         }
 
         private void DisplayReceipt()              // method to display receipt
         {
-            lblReceiptNumber.Text = receiptNumber.ToString();   // display receipt number
-            lblCustomerName.Text = customerName;   // display customer name
-            lblPaymentMethod.Text = paymentMethod; // display payment method
+            txtReceiptNum.Text = receiptNumber.ToString();   // display receipt number
+            txtCustName.Text = customerName;      // display customer name
+            txtPaymentMethod.Text = paymentMethod; // display payment method
+            txtDateTime.Text = DateTime.Now.ToString();   // display date and time
 
-            StringBuilder receiptBuilder = new StringBuilder(); // create StringBuilder
-            receiptBuilder.AppendLine("----- Delicioso E‑Ristorante -----");   // header
-            receiptBuilder.AppendLine($"Receipt #: {receiptNumber}");          // receipt number line
-            receiptBuilder.AppendLine($"Customer: {customerName}");            // customer name line
-            receiptBuilder.AppendLine($"Payment: {paymentMethod}");            // payment method line
-            receiptBuilder.AppendLine($"Date/Time: {DateTime.Now}");           // date and time line
-            receiptBuilder.AppendLine("");                                     // blank line
-            receiptBuilder.AppendLine("Items Ordered:");                       // items header
+            lstOrderSummary.Items.Clear();         // clear order summary listbox
 
-            foreach (OrderItem item in orderList)                              // loop through items
+            foreach (OrderItem item in orderList)  // loop through ordered items
             {
-                receiptBuilder.AppendLine($"{item.Name} x{item.Quantity} @ {item.UnitPrice:C} = {item.LineTotal():C}");   // item line
+                lstOrderSummary.Items.Add($"{item.Name} x{item.Quantity} - {item.LineTotal():C}");   // add item line
             }
 
-            receiptBuilder.AppendLine("----------------------------------");   // divider
-            receiptBuilder.AppendLine($"Subtotal: {subtotal:C}");              // subtotal line
-            receiptBuilder.AppendLine($"Tax (9.5%): {taxAmount:C}");           // tax line
-            receiptBuilder.AppendLine($"Total Before Tip: {totalBeforeTip:C}");// total before tip line
-            receiptBuilder.AppendLine($"Tip: {tipAmount:C}");                  // tip line
-            receiptBuilder.AppendLine($"Grand Total: {grandTotal:C}");         // grand total line
-            receiptBuilder.AppendLine("----------------------------------");   // divider
-            receiptBuilder.AppendLine("Thank you for dining with us!");        // thank you line
-
-            txtReceiptDisplay.Text = receiptBuilder.ToString();                // display receipt text
+            txtSubtotalReceipt.Text = subtotal.ToString("C");        // display subtotal
+            txtTaxReceipt.Text = taxAmount.ToString("C");            // display tax
+            txtTipReceipt.Text = tipAmount.ToString("C");            // display tip
+            txtTotalReceipt.Text = grandTotal.ToString("C");         // display grand total
         }
 
-        private void btnSaveReceipt_Click(object sender, EventArgs e)          // save receipt button click event
+        private void btnSaveReceipt_Click(object sender, EventArgs e)   // save receipt click event
         {
-            try                                                                // try block
+            try                                                         // try block
             {
-                if (saveReceiptFile.ShowDialog() == DialogResult.OK)           // show save file dialog
+                if (saveReceiptFile.ShowDialog() == DialogResult.OK)    // show save dialog
                 {
-                    string filePath = saveReceiptFile.FileName;                // get file path
-                    File.WriteAllText(filePath, txtReceiptDisplay.Text);       // write receipt to file
-                    MessageBox.Show("Receipt saved successfully!");            // show success message
+                    string filePath = saveReceiptFile.FileName;         // get file path
 
-                    SplashForm splash = new SplashForm();                      // create new splash form
-                    splash.Show();                                             // show splash form
-                    this.Hide();                                               // hide receipt form
+                    using (StreamWriter writer = new StreamWriter(filePath))   // create writer
+                    {
+                        writer.WriteLine("----- Delicioso E‑Ristorante -----");   // header
+                        writer.WriteLine($"Receipt #: {receiptNumber}");         // receipt number
+                        writer.WriteLine($"Customer: {customerName}");           // customer name
+                        writer.WriteLine($"Payment: {paymentMethod}");           // payment method
+                        writer.WriteLine($"Date/Time: {DateTime.Now}");          // date and time
+                        writer.WriteLine("");                                    // blank line
+                        writer.WriteLine("Items Ordered:");                      // items header
+
+                        foreach (OrderItem item in orderList)                    // loop items
+                        {
+                            writer.WriteLine($"{item.Name} x{item.Quantity} @ {item.UnitPrice:C} = {item.LineTotal():C}");   // item line
+                        }
+
+                        writer.WriteLine("----------------------------------");   // divider
+                        writer.WriteLine($"Subtotal: {subtotal:C}");             // subtotal
+                        writer.WriteLine($"Tax (9.5%): {taxAmount:C}");          // tax
+                        writer.WriteLine($"Total Before Tip: {totalBeforeTip:C}"); // total before tip
+                        writer.WriteLine($"Tip: {tipAmount:C}");                 // tip
+                        writer.WriteLine($"Grand Total: {grandTotal:C}");        // grand total
+                        writer.WriteLine("----------------------------------");   // divider
+                        writer.WriteLine("Thank you for dining with us!");       // thank you line
+                    }
+
+                    MessageBox.Show("Receipt saved successfully!");              // success message
+
+                    SplashForm splash = new SplashForm();                        // create splash form
+                    splash.Show();                                               // show splash form
+                    this.Hide();                                                 // hide receipt form
                 }
             }
-            catch (Exception ex)                                               // catch block
+            catch (Exception ex)                                                 // catch block
             {
-                MessageBox.Show("Error saving receipt: " + ex.Message);        // show error message
+                MessageBox.Show("Error saving receipt: " + ex.Message);          // show error message
             }
         }
     }
