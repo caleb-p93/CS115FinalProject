@@ -6,7 +6,7 @@ namespace DeliciosoERistorante                     // project namespace
 {
     public partial class frmCheckout : Form       // frmCheckout class
     {
-        private List<OrderItem> orderLists;        // list of ordered items (changed 5/1/26 for clarity pruposes by Caleb)
+        private List<OrderItem> orderList;         // list of ordered items
         private const double TaxRate = 0.095;      // constant tax rate
         private static int receiptCounter = 1;     // static receipt counter
 
