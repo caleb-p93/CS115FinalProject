@@ -8,7 +8,7 @@ namespace DeliciosoERistorante                     // project namespace
     {
         private List<OrderItem> orderList;         // list to store order items
 
-        private string[] mainDishes =              // array of main dishes
+        private string[] mainDishes =              // array of main dishes 
         {
             "Spaghetti",
             "Lasagna",
