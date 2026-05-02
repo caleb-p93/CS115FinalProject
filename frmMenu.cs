@@ -1,3 +1,5 @@
+// updated 5.2.26 - Mike - Updated only names of items and prices
+using FinalProject;
 using System;                                      // using System namespace
 using System.Collections.Generic;                  // using generic collections
 using System.Windows.Forms;                        // using Windows Forms namespace
@@ -10,31 +12,43 @@ namespace DeliciosoERistorante                     // project namespace
 
         private string[] mainDishes =              // array of main dishes 
         {
-            "Spaghetti",
-            "Lasagna",
+            "Spaghetti Marinara",
             "Fettuccine Alfredo",
-            "Margherita Pizza",
-            "Chicken Parmigiana",
-            "Ravioli"
+            "Lasagna",
+            "Cheese Pizza",
+            "Pepperoni Pizza",
+            "Chicken Parmesan",
+            "Pasta Primavera",
+            "Baked Ziti",
+            "Meat Ravioli",
+            "Shrimp Linguine"
         };
 
         private string[] salads =                  // array of salads
         {
             "Caesar Salad",
-            "Garden Salad"
+            "Caprese Salad",
+            "Garden Salad",
+            "Arugula Salad",
+            "Greek Salad",
+            "Antipasto Salad"
         };
 
         private string[] beverages =               // array of beverages
         {
+            "Coffee",
+            "Espresso",
+            "Lemonade",
             "Iced Tea",
-            "Soda",
-            "Coffee"
+            "Wine"
         };
 
         private string[] desserts =                // array of desserts
         {
             "Tiramisu",
             "Cannoli",
+            "Panna Cotta",
+            "Gelato",
             "Cheesecake"
         };
 
@@ -58,20 +72,32 @@ namespace DeliciosoERistorante                     // project namespace
         {
             prices = new Dictionary<string, double>();   // create new dictionary
 
-            prices["Spaghetti"] = 12.99;           // spaghetti price
-            prices["Lasagna"] = 14.99;             // lasagna price
-            prices["Fettuccine Alfredo"] = 13.99;  // fettuccine price
-            prices["Margherita Pizza"] = 11.99;    // pizza price
-            prices["Chicken Parmigiana"] = 15.99;  // chicken parm price
-            prices["Ravioli"] = 13.49;             // ravioli price
-            prices["Caesar Salad"] = 8.99;         // caesar salad price
-            prices["Garden Salad"] = 7.99;         // garden salad price
-            prices["Iced Tea"] = 2.99;             // iced tea price
-            prices["Soda"] = 2.49;                 // soda price
-            prices["Coffee"] = 2.99;               // coffee price
+            prices["Spaghetti Marinara"] = 11.99;  // spaghetti marinara price
+            prices["Fettuccine Alfredo"] = 12.99;  // fettuccine price
+            prices["Lasagna"] = 13.99;             // lasagna price
+            prices["Cheese Pizza"] = 10.99;        // cheese pizza price
+            prices["Pepperoni Pizza"] = 11.49;     // pepperoni pizza price
+            prices["Chicken Parmesan"] = 14.99;    // chicken parmesan price
+            prices["Pasta Primavera"] = 11.99;     // pasta primavera price
+            prices["Baked Ziti"] = 12.49;          // baked ziti price
+            prices["Meat Ravioli"] = 13.49;        // meat ravioli price
+            prices["Shrimp Linguine"] = 15.99;     // shrimp linguine price
+            prices["Caesar Salad"] = 7.99;         // caesar salad price
+            prices["Caprese Salad"] = 8.49;        // caprese salad price
+            prices["Garden Salad"] = 6.99;         // garden salad price
+            prices["Arugula Salad"] = 7.49;        // arugula salad price
+            prices["Greek Salad"] = 8.99;          // greek salad price
+            prices["Antipasto Salad"] = 6.49;      // antipasto salad price
+            prices["Coffee"] = 2.49;               // coffee price
+            prices["Espresso"] = 1.99;             // espresso price
+            prices["Lemonade"] = 2.99;             // lemonade price
+            prices["Iced Tea"] = 2.49;             // iced tea price
+            prices["Wine"] = 2.99;                 // wine price
             prices["Tiramisu"] = 6.99;             // tiramisu price
             prices["Cannoli"] = 5.99;              // cannoli price
-            prices["Cheesecake"] = 6.49;           // cheesecake price
+            prices["Panna Cotta"] = 6.49;          // panna cotta price
+            prices["Gelato"] = 5.49;               // gelato price
+            prices["Cheesecake"] = 7.99;           // cheesecake price
         }
 
         private void LoadCategories()              // method to load categories
