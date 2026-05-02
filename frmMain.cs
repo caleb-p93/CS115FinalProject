@@ -1,31 +1,27 @@
-using System;                                      // using System namespace
-using System.Windows.Forms;                        // using Windows Forms namespace
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace DeliciosoERistorante                     // project namespace
+namespace FinalProject
 {
-    public partial class SplashForm : Form         // SplashForm class
+    public partial class frmSplash : Form
     {
-        public SplashForm()                        // constructor
+        public frmSplash()
         {
-            InitializeComponent();                 // initialize form components
-            MaximizeSplashForm();                  // call method to maximize form
+            InitializeComponent();
         }
-
-        private void MaximizeSplashForm()          // method to maximize splash form
+        // button on splash page that leads to menu page
+        private void btnMenu_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;   // set window state to maximized
-        }
-
-        private void btnEnter_Click(object sender, EventArgs e)   // enter button click event
-        {
-            OpenfrmMenu();                        // call method to open menu form
-        }
-
-        private void OpenfrmMenu()                // method to open menu form
-        {
-            frmMenu menu = new frmMenu();        // create new instance of frmMenu
-            menu.Show();                           // show menu form
-            this.Hide();                           // hide splash form
+            frmMenu menu = new frmMenu();
+            menu.Show();
+            this.Hide();
         }
     }
 }

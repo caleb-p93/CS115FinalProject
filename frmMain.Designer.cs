@@ -1,6 +1,6 @@
-﻿namespace DeliciosoERistorante
+﻿namespace FinalProject
 {
-    partial class SplashForm
+    partial class frmSplash
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSplash));
             this.btnMenu = new System.Windows.Forms.Button();
             this.lblSplashTitle = new System.Windows.Forms.Label();
             this.lblSplashWelcome = new System.Windows.Forms.Label();
@@ -84,7 +84,7 @@
             this.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "SplashForm";
+            this.Name = "frmSplash";
             this.Text = "Splash Page";
             this.ResumeLayout(false);
             this.PerformLayout();
