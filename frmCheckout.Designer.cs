@@ -1,4 +1,4 @@
-﻿namespace FinalProject
+﻿namespace DeliciosoERistorante
 {
     partial class frmCheckout
     {

@@ -1,4 +1,5 @@
-﻿namespace FinalProject
+// updated 5.2.26 - Mike - Updated for button layout changes
+namespace DeliciosoERistorante 
 {
     partial class frmMenu
     {
@@ -116,7 +117,7 @@
             "Shrimp Linguine \t\t\t$15.99"});
             this.lstMainDishes.Location = new System.Drawing.Point(50, 24);
             this.lstMainDishes.Name = "lstMainDishes";
-            this.lstMainDishes.Size = new System.Drawing.Size(320, 126);
+            this.lstMainDishes.Size = new System.Drawing.Size(320, 180);
             this.lstMainDishes.TabIndex = 0;
             // 
             // groupBox1
@@ -136,7 +137,7 @@
             // 
             // numSalads
             // 
-            this.numSalads.Location = new System.Drawing.Point(307, 171);
+            this.numSalads.Location = new System.Drawing.Point(307, 167);
             this.numSalads.Name = "numSalads";
             this.numSalads.Size = new System.Drawing.Size(54, 25);
             this.numSalads.TabIndex = 4;
@@ -146,7 +147,7 @@
             this.lblSaladsQty.AutoSize = true;
             this.lblSaladsQty.BackColor = System.Drawing.SystemColors.Window;
             this.lblSaladsQty.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSaladsQty.Location = new System.Drawing.Point(252, 171);
+            this.lblSaladsQty.Location = new System.Drawing.Point(252, 167);
             this.lblSaladsQty.Name = "lblSaladsQty";
             this.lblSaladsQty.Size = new System.Drawing.Size(49, 22);
             this.lblSaladsQty.TabIndex = 3;
@@ -275,7 +276,7 @@
             "Cheesecake \t\t\t$7.99"});
             this.lstDesserts.Location = new System.Drawing.Point(63, 24);
             this.lstDesserts.Name = "lstDesserts";
-            this.lstDesserts.Size = new System.Drawing.Size(298, 108);
+            this.lstDesserts.Size = new System.Drawing.Size(298, 90);
             this.lstDesserts.TabIndex = 0;
             // 
             // gbxCurrentOrder
@@ -285,7 +286,7 @@
             this.gbxCurrentOrder.Controls.Add(this.button1);
             this.gbxCurrentOrder.Controls.Add(this.btnMenuClear);
             this.gbxCurrentOrder.Controls.Add(this.lstCurrentOrder);
-            this.gbxCurrentOrder.Location = new System.Drawing.Point(349, 567);
+            this.gbxCurrentOrder.Location = new System.Drawing.Point(223, 576);
             this.gbxCurrentOrder.Name = "gbxCurrentOrder";
             this.gbxCurrentOrder.Size = new System.Drawing.Size(593, 147);
             this.gbxCurrentOrder.TabIndex = 3;
@@ -328,7 +329,7 @@
             // 
             this.btnSubmitOrder.BackColor = System.Drawing.Color.Wheat;
             this.btnSubmitOrder.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmitOrder.Location = new System.Drawing.Point(451, 739);
+            this.btnSubmitOrder.Location = new System.Drawing.Point(874, 591);
             this.btnSubmitOrder.Name = "btnSubmitOrder";
             this.btnSubmitOrder.Size = new System.Drawing.Size(133, 43);
             this.btnSubmitOrder.TabIndex = 1;
@@ -339,9 +340,9 @@
             // 
             this.btnRequestCheck.BackColor = System.Drawing.Color.Wheat;
             this.btnRequestCheck.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRequestCheck.Location = new System.Drawing.Point(680, 739);
+            this.btnRequestCheck.Location = new System.Drawing.Point(874, 656);
             this.btnRequestCheck.Name = "btnRequestCheck";
-            this.btnRequestCheck.Size = new System.Drawing.Size(119, 43);
+            this.btnRequestCheck.Size = new System.Drawing.Size(133, 45);
             this.btnRequestCheck.TabIndex = 4;
             this.btnRequestCheck.Text = "Request Check";
             this.btnRequestCheck.UseVisualStyleBackColor = false;
@@ -353,7 +354,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1310, 749);
+            this.ClientSize = new System.Drawing.Size(1268, 749);
             this.Controls.Add(this.btnRequestCheck);
             this.Controls.Add(this.gbxCurrentOrder);
             this.Controls.Add(this.btnSubmitOrder);
