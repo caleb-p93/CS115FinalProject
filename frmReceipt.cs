@@ -3,7 +3,7 @@ using System.Collections.Generic;                  // using generic collections
 using System.IO;                                   // using IO namespace
 using System.Windows.Forms;                        // using Windows Forms namespace
 
-namespace FinalProject                              // corrected project namespace
+namespace DeliciosoERistorante                              // corrected project namespace
 {
     public partial class frmReceipt : Form         // corrected class name
     {
