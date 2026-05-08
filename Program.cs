@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FinalProject
+namespace DeliciosoERistorante // changed from namespace FinalProect 5.8.26 - Mike
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace FinalProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new frmSplash()); // changed from newfrmMain - 5.8.26 - Mike
         }
     }
 }
