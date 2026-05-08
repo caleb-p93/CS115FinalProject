@@ -1,4 +1,4 @@
-// updated 5.2.26 - Mike - Fully rewritten to match Designer layout and Option B behavior
+// updated 5.2.26 - Mike - Fully rewritten to match Designer layout 
 using System;                                      // using System namespace
 using System.Collections.Generic;                  // using generic collections
 using System.Windows.Forms;                        // using Windows Forms namespace
@@ -10,60 +10,18 @@ namespace DeliciosoERistorante                     // project namespace
         private List<OrderItem> orderList;         // list to store order items
         private Dictionary<string, double> prices; // dictionary of item prices
 
-        private string[] mainDishes =              // array of main dishes
-        {
-            "Spaghetti Marinara",
-            "Fettuccine Alfredo",
-            "Lasagna",
-            "Cheese Pizza",
-            "Pepperoni Pizza",
-            "Chicken Parmesan",
-            "Pasta Primavera",
-            "Baked Ziti",
-            "Meat Ravioli",
-            "Shrimp Linguine"
-        };
-
-        private string[] salads =                  // array of salads
-        {
-            "Caesar Salad",
-            "Caprese Salad",
-            "Garden Salad",
-            "Arugula Salad",
-            "Greek Salad",
-            "Antipasto Salad"
-        };
-
-        private string[] beverages =               // array of beverages
-        {
-            "Coffee",
-            "Espresso",
-            "Lemonade",
-            "Iced Tea",
-            "Wine"
-        };
-
-        private string[] desserts =                // array of desserts
-        {
-            "Tiramisu",
-            "Cannoli",
-            "Panna Cotta",
-            "Gelato",
-            "Cheesecake"
-        };
-
         public frmMenu()                           // constructor
         {
             InitializeComponent();                 // initialize form components
             this.WindowState = FormWindowState.Maximized;   // maximize window
             InitializeOrderList();                 // initialize order list
             InitializePrices();                    // initialize prices
-            LoadMenuItems();                       // load menu items into listboxes
             WireEvents();                          // wire button events
         }
 
         private void WireEvents()                  // method to wire events
         {
+            btnAddItems.Click += btnAddItems_Click;         // wire add selected items button
             btnSubmitOrder.Click += btnSubmitOrder_Click;   // wire submit order button
             btnMenuClear.Click += btnMenuClear_Click;       // wire clear all button
             button1.Click += button1_Click;                 // wire remove item button
@@ -110,129 +68,150 @@ namespace DeliciosoERistorante                     // project namespace
             prices["Cheesecake"] = 7.99;           // price
         }
 
-        private void LoadMenuItems()               // method to load menu items
+        private void btnAddItems_Click(object sender, EventArgs e)   // add selected items click
         {
-            lstMainDishes.Items.Clear();           // clear main dishes list
-            lstSalads.Items.Clear();               // clear salads list
-            lstBeverages.Items.Clear();            // clear beverages list
-            lstDesserts.Items.Clear();             // clear desserts list
+            AddItemFromCategory(lstMainDishes, numMainDishes);   // add main dish
+            AddItemFromCategory(lstSalads, numSalads);           // add salad
+            AddItemFromCategory(lstBeverages, numBeverages);     // add beverage
+            AddItemFromCategory(lstDesserts, numDesserts);       // add dessert
 
-            foreach (string item in mainDishes)    // loop main dishes
-                lstMainDishes.Items.Add(item);     // add item
-
-            foreach (string item in salads)        // loop salads
-                lstSalads.Items.Add(item);         // add item
-
-            foreach (string item in beverages)     // loop beverages
-                lstBeverages.Items.Add(item);      // add item
-
-            foreach (string item in desserts)      // loop desserts
-                lstDesserts.Items.Add(item);       // add item
+            RefreshOrderListBox();                               // refresh order listbox
         }
 
-        private void btnSubmitOrder_Click(object sender, EventArgs e)   // submit order click
+        private void AddItemFromCategory(ListBox list, NumericUpDown qty)   // add item helper
         {
-            AddSelectedItem(lstMainDishes, numMainDishes);   // add main dish
-            AddSelectedItem(lstSalads, numSalads);           // add salad
-            AddSelectedItem(lstBeverages, numBeverages);     // add beverage
-            AddSelectedItem(lstDesserts, numDesserts);       // add dessert
+            if (list.SelectedItem == null)                       // check if item selected
+                return;                                          // exit if none
 
-            RefreshOrderListBox();                           // refresh order listbox
-        }
+            int quantity = (int)qty.Value;                       // get quantity
 
-        private void AddSelectedItem(ListBox list, NumericUpDown qty)   // add selected item
-        {
-            if (list.SelectedItem == null)                   // check if item selected
-                return;                                      // exit if none
+            if (quantity <= 0)                                   // check quantity
+                return;                                          // exit if invalid
 
-            int quantity = (int)qty.Value;                   // get quantity
+            string rawText = list.SelectedItem.ToString();        // get raw listbox text
+            string itemName = ExtractName(rawText);               // extract item name
+            double price = prices[itemName];                      // get price
 
-            if (quantity <= 0)                               // check quantity
-                return;                                      // exit if invalid
+            OrderItem existing = FindOrderItem(itemName);         // find existing item
 
-            string itemName = list.SelectedItem.ToString();  // get item name
-            double price = prices[itemName];                 // get price
-
-            OrderItem existing = FindOrderItem(itemName);    // find existing item
-
-            if (existing != null)                            // if exists
-                existing.Quantity += quantity;               // increase quantity
-            else                                             // otherwise
+            if (existing != null)                                // if exists
+                existing.Quantity += quantity;                   // increase quantity
+            else                                                 // otherwise
                 orderList.Add(new OrderItem(itemName, quantity, price));   // add new item
+
+            qty.Value = 0;                                       // reset quantity
+            list.ClearSelected();                                // clear selection
         }
 
-        private OrderItem FindOrderItem(string name)         // find order item
+        private string ExtractName(string raw)                   // extract item name
         {
-            foreach (OrderItem item in orderList)            // loop items
-                if (item.Name == name)                       // check match
-                    return item;                             // return item
+            int tabIndex = raw.IndexOf("\t");                    // find tab
+            if (tabIndex > 0)                                    // if found
+                return raw.Substring(0, tabIndex).Trim();        // return name only
 
-            return null;                                     // return null
+            return raw.Trim();                                   // fallback
         }
 
-        private void RefreshOrderListBox()                   // refresh order listbox
+        private OrderItem FindOrderItem(string name)             // find order item
         {
-            lstCurrentOrder.Items.Clear();                   // clear listbox
+            foreach (OrderItem item in orderList)                // loop items
+                if (item.Name == name)                           // check match
+                    return item;                                 // return item
 
-            foreach (OrderItem item in orderList)            // loop items
-                lstCurrentOrder.Items.Add(item.ToString());  // add formatted item
+            return null;                                         // return null
+        }
+
+        private void RefreshOrderListBox()                       // refresh order listbox
+        {
+            lstCurrentOrder.Items.Clear();                       // clear listbox
+
+            foreach (OrderItem item in orderList)                // loop items
+                lstCurrentOrder.Items.Add(item.ToString());      // add formatted item
         }
 
         private void button1_Click(object sender, EventArgs e)   // remove item click
         {
-            int index = lstCurrentOrder.SelectedIndex;        // get selected index
+            int index = lstCurrentOrder.SelectedIndex;           // get selected index
 
-            if (index < 0 || index >= orderList.Count)        // validate index
+            if (index < 0 || index >= orderList.Count)           // validate index
             {
                 MessageBox.Show("Please select an item to remove.");   // show message
-                return;                                      // exit
+                return;                                          // exit
             }
 
-            orderList.RemoveAt(index);                        // remove item
-            RefreshOrderListBox();                            // refresh listbox
+            orderList.RemoveAt(index);                           // remove item
+            RefreshOrderListBox();                               // refresh listbox
         }
 
         private void btnMenuClear_Click(object sender, EventArgs e)   // clear all click
         {
-            orderList.Clear();                                // clear order list
-            RefreshOrderListBox();                            // refresh listbox
+            orderList.Clear();                                   // clear order list
+            RefreshOrderListBox();                               // refresh listbox
+        }
+
+        private void btnSubmitOrder_Click(object sender, EventArgs e)   // submit order click
+        {
+            if (orderList.Count == 0)                            // check empty order
+            {
+                MessageBox.Show("Please add at least one item before submitting.");   // show message
+                return;                                          // exit
+            }
+
+            MessageBox.Show("Your order has been submitted!");   // show confirmation
+            ClearForm();                                         // clear form
+        }
+
+        private void ClearForm()                                 // clear form method
+        {
+            orderList.Clear();                                   // clear order list
+            RefreshOrderListBox();                               // refresh listbox
+
+            numMainDishes.Value = 0;                             // reset quantities
+            numSalads.Value = 0;
+            numBeverages.Value = 0;
+            numDesserts.Value = 0;
+
+            lstMainDishes.ClearSelected();                       // clear selections
+            lstSalads.ClearSelected();
+            lstBeverages.ClearSelected();
+            lstDesserts.ClearSelected();
         }
 
         private void btnRequestCheck_Click(object sender, EventArgs e)   // request check click
         {
-            if (orderList.Count == 0)                         // check empty order
+            if (orderList.Count == 0)                            // check empty order
             {
                 MessageBox.Show("Please add at least one item before checkout.");   // show message
-                return;                                      // exit
+                return;                                          // exit
             }
 
-            frmCheckout checkout = new frmCheckout(orderList);   // create checkout form
-            checkout.Show();                                   // show checkout form
-            this.Hide();                                       // hide menu form
+            frmCheckout checkout = new frmCheckout(new List<OrderItem>(orderList));   // pass copy
+            checkout.Show();                                      // show checkout form
+            this.Hide();                                          // hide menu form
         }
     }
 
-    public class OrderItem                               // OrderItem class
+    public class OrderItem                                   // OrderItem class
     {
-        public string Name { get; set; }                 // item name property
-        public int Quantity { get; set; }                // quantity property
-        public double UnitPrice { get; set; }            // unit price property
+        public string Name { get; set; }                     // item name property
+        public int Quantity { get; set; }                    // quantity property
+        public double UnitPrice { get; set; }                // unit price property
 
         public OrderItem(string name, int quantity, double price)   // constructor
         {
-            Name = name;                                 // assign name
-            Quantity = quantity;                         // assign quantity
-            UnitPrice = price;                           // assign price
+            Name = name;                                     // assign name
+            Quantity = quantity;                             // assign quantity
+            UnitPrice = price;                               // assign price
         }
 
-        public double LineTotal()                        // calculate line total
+        public double LineTotal()                            // calculate line total
         {
-            return Quantity * UnitPrice;                 // return total
+            return Quantity * UnitPrice;                     // return total
         }
 
-        public override string ToString()                // override ToString
+        public override string ToString()                    // override ToString
         {
-            return $"{Name} x{Quantity} - {LineTotal():C}";   // formatted string
+            return $"{Name} x{Quantity} - {LineTotal():C}";  // formatted string
         }
     }
 }
