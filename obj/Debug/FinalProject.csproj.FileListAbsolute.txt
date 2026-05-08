@@ -1,12 +1,9 @@
-C:\Mac\Home\Desktop\C#\FinalProject\bin\Debug\FinalProject.exe.config
-C:\Mac\Home\Desktop\C#\FinalProject\bin\Debug\FinalProject.exe
-C:\Mac\Home\Desktop\C#\FinalProject\bin\Debug\FinalProject.pdb
-C:\Mac\Home\Desktop\C#\FinalProject\obj\Debug\FinalProject.csproj.AssemblyReference.cache
-C:\Mac\Home\Desktop\C#\FinalProject\obj\Debug\FinalProject.Properties.Resources.resources
-C:\Mac\Home\Desktop\C#\FinalProject\obj\Debug\FinalProject.csproj.GenerateResource.cache
-C:\Mac\Home\Desktop\C#\FinalProject\obj\Debug\FinalProject.csproj.CoreCompileInputs.cache
-C:\Mac\Home\Desktop\C#\FinalProject\obj\Debug\FinalProject.exe
-C:\Mac\Home\Desktop\C#\FinalProject\obj\Debug\FinalProject.pdb
-C:\Mac\Home\Desktop\C#\FinalProject\obj\Debug\FinalProject.frmSplash.resources
-C:\Mac\Home\Desktop\C#\FinalProject\obj\Debug\FinalProject.frmMenu.resources
-C:\Mac\Home\Desktop\C#\FinalProject\obj\Debug\FinalProject.frmCheckout1.resources
+C:\Users\antis\Code Projects\CS115\FinalProject\obj\Debug\FinalProject.exe
+C:\Users\antis\Code Projects\CS115\FinalProject\obj\Debug\FinalProject.pdb
+C:\Users\antis\Code Projects\CS115\FinalProject\obj\Debug\FinalProject.csproj.AssemblyReference.cache
+C:\Users\antis\Code Projects\CS115\FinalProject\obj\Debug\FinalProject.frmReceipt.resources
+C:\Users\antis\Code Projects\CS115\FinalProject\obj\Debug\DeliciosoERistorante.frmCheckout.resources
+C:\Users\antis\Code Projects\CS115\FinalProject\obj\Debug\DeliciosoERistorante.frmMenu.resources
+C:\Users\antis\Code Projects\CS115\FinalProject\obj\Debug\DeliciosoERistorante.SplashForm.resources
+C:\Users\antis\Code Projects\CS115\FinalProject\obj\Debug\FinalProject.Properties.Resources.resources
+C:\Users\antis\Code Projects\CS115\FinalProject\obj\Debug\FinalProject.csproj.GenerateResource.cache
