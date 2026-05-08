@@ -22,7 +22,8 @@ namespace DeliciosoERistorante                     // project namespace
             this.WindowState = FormWindowState.Maximized;   // maximize window
             orderList = order;                     // assign order list
             CalculateSubtotal();                   // calculate subtotal
-            DisplayInitialTotals();                // display initial totals
+            CalculateTax();                        // calculate tax immediately
+            DisplayInitialTotals();                // display subtotal and tax
             LoadItemizedBill();                    // load itemized bill list
         }
 
@@ -46,19 +47,24 @@ namespace DeliciosoERistorante                     // project namespace
             }
         }
 
+        private void CalculateTax()                // method to calculate tax
+        {
+            taxAmount = subtotal * TaxRate;        // compute tax
+            totalBeforeTip = subtotal + taxAmount; // compute total before tip
+        }
+
         private void DisplayInitialTotals()        // method to display initial totals
         {
             txtSubtotal.Text = subtotal.ToString("C");   // display subtotal
-            txtTax.Text = "";                     // clear tax textbox
-            txtTotal.Text = "";                   // clear total textbox
+            txtTax.Text = taxAmount.ToString("C");       // display tax immediately
+            txtTotal.Text = "";                          // clear grand total textbox
         }
 
         private void btnCalcTotal_Click(object sender, EventArgs e)   // calculate total click
         {
             try                                     // try block
             {
-                CalculateTax();                     // calculate tax
-                CalculateTip();                     // calculate tip
+                CalculateTip();                     // calculate tip (dollar amount)
                 CalculateGrandTotal();              // calculate grand total
                 DisplayTotals();                    // display totals
             }
@@ -68,33 +74,26 @@ namespace DeliciosoERistorante                     // project namespace
             }
         }
 
-        private void CalculateTax()                // method to calculate tax
-        {
-            taxAmount = subtotal * TaxRate;        // compute tax
-            totalBeforeTip = subtotal + taxAmount; // compute total before tip
-        }
-
         private void CalculateTip()                // method to calculate tip
         {
-            double tipPercent = 0;                 // tip percent variable
+            tipAmount = 0;                         // reset tip amount
 
             if (!string.IsNullOrWhiteSpace(txtTip.Text))   // check if tip entered
             {
-                if (!double.TryParse(txtTip.Text, out tipPercent))   // try parse tip
+                if (!double.TryParse(txtTip.Text, out tipAmount))   // try parse tip amount
                 {
-                    MessageBox.Show("Please enter a valid numeric tip percentage.");   // show error
-                    return;                        // exit method
+                    MessageBox.Show("Please enter a valid numeric tip amount.");   // show error
+                    tipAmount = 0;                     // reset on error
+                    return;                            // exit method
                 }
 
-                if (tipPercent < 0)                // check negative tip
+                if (tipAmount < 0)                     // check negative tip
                 {
-                    MessageBox.Show("Tip percentage cannot be negative.");   // show error
-                    return;                        // exit method
+                    MessageBox.Show("Tip amount cannot be negative.");   // show error
+                    tipAmount = 0;                     // reset on error
+                    return;                            // exit method
                 }
             }
-
-            tipPercent /= 100.0;                   // convert percent to decimal
-            tipAmount = totalBeforeTip * tipPercent;   // compute tip amount
         }
 
         private void CalculateGrandTotal()         // method to calculate grand total
