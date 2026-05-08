@@ -1,6 +1,6 @@
-﻿namespace FinalProject
+﻿namespace DeliciosoERistorante
 {
-    partial class Receipt
+    partial class frmReceipt
     {
         /// <summary>
         /// Required designer variable.
