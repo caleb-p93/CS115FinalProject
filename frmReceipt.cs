@@ -1,3 +1,5 @@
+// udpated 5.8.26 - Mike - updated frmSplash to frmMain line 101
+
 using System;                                      // using System namespace
 using System.Collections.Generic;                  // using generic collections
 using System.IO;                                   // using IO namespace
@@ -50,7 +52,8 @@ namespace DeliciosoERistorante                     // corrected project namespac
 
             foreach (OrderItem item in orderList)  // loop through ordered items
             {
-                lstOrderSummary.Items.Add($"{item.Name} x{item.Quantity} - {item.LineTotal():C}");   // add item line
+                lstOrderSummary.Items.Add(
+                    $"{item.Name} x{item.Quantity} - {item.LineTotal():C}");   // add item line
             }
 
             txtSubtotalReceipt.Text = subtotal.ToString("C");        // display subtotal
@@ -69,7 +72,7 @@ namespace DeliciosoERistorante                     // corrected project namespac
 
                     using (StreamWriter writer = new StreamWriter(filePath))   // create writer
                     {
-                        writer.WriteLine("----- Delicioso E‑Ristorante -----");   // header
+                        writer.WriteLine("----- Delicioso E-Ristorante -----");   // header
                         writer.WriteLine($"Receipt #: {receiptNumber}");         // receipt number
                         writer.WriteLine($"Customer: {customerName}");           // customer name
                         writer.WriteLine($"Payment: {paymentMethod}");           // payment method
@@ -79,7 +82,8 @@ namespace DeliciosoERistorante                     // corrected project namespac
 
                         foreach (OrderItem item in orderList)                    // loop items
                         {
-                            writer.WriteLine($"{item.Name} x{item.Quantity} @ {item.UnitPrice:C} = {item.LineTotal():C}");   // item line
+                            writer.WriteLine(
+                                $"{item.Name} x{item.Quantity} @ {item.UnitPrice:C} = {item.LineTotal():C}");
                         }
 
                         writer.WriteLine("----------------------------------");   // divider
@@ -92,16 +96,16 @@ namespace DeliciosoERistorante                     // corrected project namespac
                         writer.WriteLine("Thank you for dining with us!");       // thank you line
                     }
 
-                    MessageBox.Show("Receipt saved successfully!");              // success message
+                    MessageBox.Show("Receipt saved successfully!");   // success message
 
-                    SplashForm splash = new SplashForm();                        // create splash form
-                    splash.Show();                                               // show splash form
-                    this.Hide();                                                 // hide receipt form
+                    frmMain splash = new frmMain();               // create splash form
+                    splash.Show();                                    // show splash form
+                    this.Hide();                                      // hide receipt form
                 }
             }
-            catch (Exception ex)                                                 // catch block
+            catch (Exception ex)                                      // catch block
             {
-                MessageBox.Show("Error saving receipt: " + ex.Message);          // show error message
+                MessageBox.Show("Error saving receipt: " + ex.Message); // show error message
             }
         }
     }
