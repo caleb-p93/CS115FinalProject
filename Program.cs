@@ -16,7 +16,7 @@ namespace DeliciosoERistorante // changed from namespace FinalProect 5.8.26 - Mi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmSplash()); // changed from newfrmMain - 5.8.26 - Mike
+            Application.Run(new frmMain()); 
         }
     }
 }
