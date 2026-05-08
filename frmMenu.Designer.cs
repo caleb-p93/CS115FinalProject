@@ -1,5 +1,5 @@
-// updated 5.8.26 - mike - Added 4 buttons btnMainAdd, btnSaladsAdd, btnDessertsAdd, btnBeveregesAdd
-//                       - Moved Submit Order and Request Check buttons to be inside of gbxCurrentOrder instead of outside.  
+// updated 5.8.26 - Mike - Added button btnAddItems - Rearranged items in gbxCurrentOrder to support added button
+
 namespace DeliciosoERistorante
 {
     partial class frmMenu
@@ -33,6 +33,7 @@ namespace DeliciosoERistorante
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.gbxMainDishes = new System.Windows.Forms.GroupBox();
+            this.btnAddItems = new System.Windows.Forms.Button();
             this.numMainDishes = new System.Windows.Forms.NumericUpDown();
             this.lblMainDishesQty = new System.Windows.Forms.Label();
             this.lstMainDishes = new System.Windows.Forms.ListBox();
@@ -50,15 +51,11 @@ namespace DeliciosoERistorante
             this.lblDessertsQty = new System.Windows.Forms.Label();
             this.lstDesserts = new System.Windows.Forms.ListBox();
             this.gbxCurrentOrder = new System.Windows.Forms.GroupBox();
+            this.btnRequestCheck = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnMenuClear = new System.Windows.Forms.Button();
-            this.lstCurrentOrder = new System.Windows.Forms.ListBox();
             this.btnSubmitOrder = new System.Windows.Forms.Button();
-            this.btnRequestCheck = new System.Windows.Forms.Button();
-            this.btnMainAdd = new System.Windows.Forms.Button();
-            this.btnSaladsAdd = new System.Windows.Forms.Button();
-            this.btnBeveragesAdd = new System.Windows.Forms.Button();
-            this.btnDessertsAdd = new System.Windows.Forms.Button();
+            this.lstCurrentOrder = new System.Windows.Forms.ListBox();
             this.gbxMainDishes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMainDishes)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -75,7 +72,6 @@ namespace DeliciosoERistorante
             this.gbxMainDishes.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.gbxMainDishes.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbxMainDishes.BackgroundImage")));
             this.gbxMainDishes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gbxMainDishes.Controls.Add(this.btnMainAdd);
             this.gbxMainDishes.Controls.Add(this.numMainDishes);
             this.gbxMainDishes.Controls.Add(this.lblMainDishesQty);
             this.gbxMainDishes.Controls.Add(this.lstMainDishes);
@@ -86,9 +82,20 @@ namespace DeliciosoERistorante
             this.gbxMainDishes.TabStop = false;
             this.gbxMainDishes.Text = "Main Dishes";
             // 
+            // btnAddItems
+            // 
+            this.btnAddItems.BackColor = System.Drawing.Color.Wheat;
+            this.btnAddItems.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddItems.Location = new System.Drawing.Point(63, 34);
+            this.btnAddItems.Name = "btnAddItems";
+            this.btnAddItems.Size = new System.Drawing.Size(145, 34);
+            this.btnAddItems.TabIndex = 4;
+            this.btnAddItems.Text = "Add Selected Items";
+            this.btnAddItems.UseVisualStyleBackColor = false;
+            // 
             // numMainDishes
             // 
-            this.numMainDishes.Location = new System.Drawing.Point(301, 184);
+            this.numMainDishes.Location = new System.Drawing.Point(301, 211);
             this.numMainDishes.Name = "numMainDishes";
             this.numMainDishes.Size = new System.Drawing.Size(54, 25);
             this.numMainDishes.TabIndex = 3;
@@ -98,7 +105,7 @@ namespace DeliciosoERistorante
             this.lblMainDishesQty.AutoSize = true;
             this.lblMainDishesQty.BackColor = System.Drawing.SystemColors.Window;
             this.lblMainDishesQty.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainDishesQty.Location = new System.Drawing.Point(246, 184);
+            this.lblMainDishesQty.Location = new System.Drawing.Point(246, 214);
             this.lblMainDishesQty.Name = "lblMainDishesQty";
             this.lblMainDishesQty.Size = new System.Drawing.Size(49, 22);
             this.lblMainDishesQty.TabIndex = 2;
@@ -123,7 +130,7 @@ namespace DeliciosoERistorante
             "Shrimp Linguine \t\t\t$15.99"});
             this.lstMainDishes.Location = new System.Drawing.Point(50, 24);
             this.lstMainDishes.Name = "lstMainDishes";
-            this.lstMainDishes.Size = new System.Drawing.Size(320, 144);
+            this.lstMainDishes.Size = new System.Drawing.Size(320, 180);
             this.lstMainDishes.TabIndex = 0;
             // 
             // groupBox1
@@ -131,7 +138,6 @@ namespace DeliciosoERistorante
             this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.groupBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox1.BackgroundImage")));
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBox1.Controls.Add(this.btnSaladsAdd);
             this.groupBox1.Controls.Add(this.numSalads);
             this.groupBox1.Controls.Add(this.lblSaladsQty);
             this.groupBox1.Controls.Add(this.lstSalads);
@@ -193,13 +199,12 @@ namespace DeliciosoERistorante
             this.bgxBeverages.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.bgxBeverages.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bgxBeverages.BackgroundImage")));
             this.bgxBeverages.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bgxBeverages.Controls.Add(this.btnBeveragesAdd);
             this.bgxBeverages.Controls.Add(this.numBeverages);
             this.bgxBeverages.Controls.Add(this.lblBeveragesQty);
             this.bgxBeverages.Controls.Add(this.lstBeverages);
             this.bgxBeverages.Location = new System.Drawing.Point(156, 349);
             this.bgxBeverages.Name = "bgxBeverages";
-            this.bgxBeverages.Size = new System.Drawing.Size(428, 212);
+            this.bgxBeverages.Size = new System.Drawing.Size(428, 193);
             this.bgxBeverages.TabIndex = 2;
             this.bgxBeverages.TabStop = false;
             this.bgxBeverages.Text = "Beverages";
@@ -243,13 +248,12 @@ namespace DeliciosoERistorante
             this.gbxDesserts.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.gbxDesserts.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbxDesserts.BackgroundImage")));
             this.gbxDesserts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gbxDesserts.Controls.Add(this.btnDessertsAdd);
             this.gbxDesserts.Controls.Add(this.numDesserts);
             this.gbxDesserts.Controls.Add(this.lblDessertsQty);
             this.gbxDesserts.Controls.Add(this.lstDesserts);
             this.gbxDesserts.Location = new System.Drawing.Point(680, 349);
             this.gbxDesserts.Name = "gbxDesserts";
-            this.gbxDesserts.Size = new System.Drawing.Size(428, 212);
+            this.gbxDesserts.Size = new System.Drawing.Size(428, 193);
             this.gbxDesserts.TabIndex = 2;
             this.gbxDesserts.TabStop = false;
             this.gbxDesserts.Text = "Desserts";
@@ -292,23 +296,35 @@ namespace DeliciosoERistorante
             // 
             this.gbxCurrentOrder.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.gbxCurrentOrder.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gbxCurrentOrder.BackgroundImage")));
+            this.gbxCurrentOrder.Controls.Add(this.btnAddItems);
             this.gbxCurrentOrder.Controls.Add(this.btnRequestCheck);
             this.gbxCurrentOrder.Controls.Add(this.button1);
             this.gbxCurrentOrder.Controls.Add(this.btnMenuClear);
-            this.gbxCurrentOrder.Controls.Add(this.btnSubmitOrder);
             this.gbxCurrentOrder.Controls.Add(this.lstCurrentOrder);
-            this.gbxCurrentOrder.Location = new System.Drawing.Point(223, 576);
+            this.gbxCurrentOrder.Controls.Add(this.btnSubmitOrder);
+            this.gbxCurrentOrder.Location = new System.Drawing.Point(223, 561);
             this.gbxCurrentOrder.Name = "gbxCurrentOrder";
-            this.gbxCurrentOrder.Size = new System.Drawing.Size(758, 147);
+            this.gbxCurrentOrder.Size = new System.Drawing.Size(833, 160);
             this.gbxCurrentOrder.TabIndex = 3;
             this.gbxCurrentOrder.TabStop = false;
             this.gbxCurrentOrder.Text = "Current Order";
+            // 
+            // btnRequestCheck
+            // 
+            this.btnRequestCheck.BackColor = System.Drawing.Color.Wheat;
+            this.btnRequestCheck.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRequestCheck.Location = new System.Drawing.Point(639, 89);
+            this.btnRequestCheck.Name = "btnRequestCheck";
+            this.btnRequestCheck.Size = new System.Drawing.Size(133, 45);
+            this.btnRequestCheck.TabIndex = 4;
+            this.btnRequestCheck.Text = "Request Check";
+            this.btnRequestCheck.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Wheat;
             this.button1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(394, 24);
+            this.button1.Location = new System.Drawing.Point(583, 34);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 34);
             this.button1.TabIndex = 3;
@@ -319,88 +335,33 @@ namespace DeliciosoERistorante
             // 
             this.btnMenuClear.BackColor = System.Drawing.Color.Wheat;
             this.btnMenuClear.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuClear.Location = new System.Drawing.Point(394, 80);
+            this.btnMenuClear.Location = new System.Drawing.Point(704, 34);
             this.btnMenuClear.Name = "btnMenuClear";
             this.btnMenuClear.Size = new System.Drawing.Size(114, 34);
             this.btnMenuClear.TabIndex = 2;
             this.btnMenuClear.Text = "Clear All";
             this.btnMenuClear.UseVisualStyleBackColor = false;
             // 
+            // btnSubmitOrder
+            // 
+            this.btnSubmitOrder.BackColor = System.Drawing.Color.Wheat;
+            this.btnSubmitOrder.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmitOrder.Location = new System.Drawing.Point(63, 89);
+            this.btnSubmitOrder.Name = "btnSubmitOrder";
+            this.btnSubmitOrder.Size = new System.Drawing.Size(145, 43);
+            this.btnSubmitOrder.TabIndex = 1;
+            this.btnSubmitOrder.Text = "Submit Order";
+            this.btnSubmitOrder.UseVisualStyleBackColor = false;
+            // 
             // lstCurrentOrder
             // 
             this.lstCurrentOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstCurrentOrder.FormattingEnabled = true;
             this.lstCurrentOrder.ItemHeight = 18;
-            this.lstCurrentOrder.Location = new System.Drawing.Point(47, 24);
+            this.lstCurrentOrder.Location = new System.Drawing.Point(258, 34);
             this.lstCurrentOrder.Name = "lstCurrentOrder";
-            this.lstCurrentOrder.Size = new System.Drawing.Size(305, 90);
+            this.lstCurrentOrder.Size = new System.Drawing.Size(305, 108);
             this.lstCurrentOrder.TabIndex = 0;
-            // 
-            // btnSubmitOrder
-            // 
-            this.btnSubmitOrder.BackColor = System.Drawing.Color.Wheat;
-            this.btnSubmitOrder.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmitOrder.Location = new System.Drawing.Point(568, 20);
-            this.btnSubmitOrder.Name = "btnSubmitOrder";
-            this.btnSubmitOrder.Size = new System.Drawing.Size(133, 43);
-            this.btnSubmitOrder.TabIndex = 1;
-            this.btnSubmitOrder.Text = "Submit Order";
-            this.btnSubmitOrder.UseVisualStyleBackColor = false;
-            // 
-            // btnRequestCheck
-            // 
-            this.btnRequestCheck.BackColor = System.Drawing.Color.Wheat;
-            this.btnRequestCheck.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRequestCheck.Location = new System.Drawing.Point(568, 75);
-            this.btnRequestCheck.Name = "btnRequestCheck";
-            this.btnRequestCheck.Size = new System.Drawing.Size(133, 45);
-            this.btnRequestCheck.TabIndex = 4;
-            this.btnRequestCheck.Text = "Request Check";
-            this.btnRequestCheck.UseVisualStyleBackColor = false;
-            // 
-            // btnMainAdd
-            // 
-            this.btnMainAdd.BackColor = System.Drawing.Color.Wheat;
-            this.btnMainAdd.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMainAdd.Location = new System.Drawing.Point(241, 214);
-            this.btnMainAdd.Name = "btnMainAdd";
-            this.btnMainAdd.Size = new System.Drawing.Size(114, 34);
-            this.btnMainAdd.TabIndex = 4;
-            this.btnMainAdd.Text = "Add To Order";
-            this.btnMainAdd.UseVisualStyleBackColor = false;
-            // 
-            // btnSaladsAdd
-            // 
-            this.btnSaladsAdd.BackColor = System.Drawing.Color.Wheat;
-            this.btnSaladsAdd.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaladsAdd.Location = new System.Drawing.Point(247, 179);
-            this.btnSaladsAdd.Name = "btnSaladsAdd";
-            this.btnSaladsAdd.Size = new System.Drawing.Size(114, 34);
-            this.btnSaladsAdd.TabIndex = 5;
-            this.btnSaladsAdd.Text = "Add To Order";
-            this.btnSaladsAdd.UseVisualStyleBackColor = false;
-            // 
-            // btnBeveragesAdd
-            // 
-            this.btnBeveragesAdd.BackColor = System.Drawing.Color.Wheat;
-            this.btnBeveragesAdd.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBeveragesAdd.Location = new System.Drawing.Point(241, 159);
-            this.btnBeveragesAdd.Name = "btnBeveragesAdd";
-            this.btnBeveragesAdd.Size = new System.Drawing.Size(114, 34);
-            this.btnBeveragesAdd.TabIndex = 6;
-            this.btnBeveragesAdd.Text = "Add To Order";
-            this.btnBeveragesAdd.UseVisualStyleBackColor = false;
-            // 
-            // btnDessertsAdd
-            // 
-            this.btnDessertsAdd.BackColor = System.Drawing.Color.Wheat;
-            this.btnDessertsAdd.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDessertsAdd.Location = new System.Drawing.Point(247, 159);
-            this.btnDessertsAdd.Name = "btnDessertsAdd";
-            this.btnDessertsAdd.Size = new System.Drawing.Size(114, 34);
-            this.btnDessertsAdd.TabIndex = 7;
-            this.btnDessertsAdd.Text = "Add To Order";
-            this.btnDessertsAdd.UseVisualStyleBackColor = false;
             // 
             // frmMenu
             // 
@@ -465,9 +426,6 @@ namespace DeliciosoERistorante
         private System.Windows.Forms.Button btnSubmitOrder;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnRequestCheck;
-        private System.Windows.Forms.Button btnMainAdd;
-        private System.Windows.Forms.Button btnSaladsAdd;
-        private System.Windows.Forms.Button btnBeveragesAdd;
-        private System.Windows.Forms.Button btnDessertsAdd;
+        private System.Windows.Forms.Button btnAddItems;
     }
 }
