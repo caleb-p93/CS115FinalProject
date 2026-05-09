@@ -7,7 +7,7 @@ namespace DeliciosoERistorante                     // project namespace
 {
     public partial class frmMenu : Form            // frmMenu class
     {
-        private List<OrderItem> orderList;         // list to store order items
+        private List<OrderItem> orderList;         // list to store all ordered items
         private Dictionary<string, double> prices; // dictionary of item prices
 
         public frmMenu()                           // constructor
@@ -35,37 +35,37 @@ namespace DeliciosoERistorante                     // project namespace
 
         private void InitializePrices()            // method to initialize prices
         {
-            prices = new Dictionary<string, double>();   // menu item prices
+            prices = new Dictionary<string, double>();   // create dictionary
 
-            prices["Spaghetti Marinara"] = 11.99;  
-            prices["Fettuccine Alfredo"] = 12.99;  
-            prices["Lasagna"] = 13.99;             
-            prices["Cheese Pizza"] = 10.99;        
-            prices["Pepperoni Pizza"] = 11.49;     
-            prices["Chicken Parmesan"] = 14.99;    
-            prices["Pasta Primavera"] = 11.99;     
-            prices["Baked Ziti"] = 12.49;          
-            prices["Meat Ravioli"] = 13.49;        
-            prices["Shrimp Linguine"] = 15.99;     
+            prices["Spaghetti Marinara"] = 11.99;  // price
+            prices["Fettuccine Alfredo"] = 12.99;  // price
+            prices["Lasagna"] = 13.99;             // price
+            prices["Cheese Pizza"] = 10.99;        // price
+            prices["Pepperoni Pizza"] = 11.49;     // price
+            prices["Chicken Parmesan"] = 14.99;    // price
+            prices["Pasta Primavera"] = 11.99;     // price
+            prices["Baked Ziti"] = 12.49;          // price
+            prices["Meat Ravioli"] = 13.49;        // price
+            prices["Shrimp Linguine"] = 15.99;     // price
 
-            prices["Caesar Salad"] = 7.99;         
-            prices["Caprese Salad"] = 8.49;        
-            prices["Garden Salad"] = 6.99;         
-            prices["Arugula Salad"] = 7.49;        
-            prices["Greek Salad"] = 8.99;          
-            prices["Antipasto Salad"] = 6.49;      
+            prices["Caesar Salad"] = 7.99;         // price
+            prices["Caprese Salad"] = 8.49;        // price
+            prices["Garden Salad"] = 6.99;         // price
+            prices["Arugula Salad"] = 7.49;        // price
+            prices["Greek Salad"] = 8.99;          // price
+            prices["Antipasto Salad"] = 6.49;      // price
 
-            prices["Coffee"] = 2.49;               
-            prices["Espresso"] = 1.99;             
-            prices["Lemonade"] = 2.99;             
-            prices["Iced Tea"] = 2.49;             
-            prices["Wine"] = 2.99;                 
+            prices["Coffee"] = 2.49;               // price
+            prices["Espresso"] = 1.99;             // price
+            prices["Lemonade"] = 2.99;             // price
+            prices["Iced Tea"] = 2.49;             // price
+            prices["Wine"] = 2.99;                 // price
 
-            prices["Tiramisu"] = 6.99;             
-            prices["Cannoli"] = 5.99;              
-            prices["Panna Cotta"] = 6.49;          
-            prices["Gelato"] = 5.49;               
-            prices["Cheesecake"] = 7.99;           
+            prices["Tiramisu"] = 6.99;             // price
+            prices["Cannoli"] = 5.99;              // price
+            prices["Panna Cotta"] = 6.49;          // price
+            prices["Gelato"] = 5.49;               // price
+            prices["Cheesecake"] = 7.99;           // price
         }
 
         private void btnAddItems_Click(object sender, EventArgs e)   // add selected items click
@@ -95,9 +95,14 @@ namespace DeliciosoERistorante                     // project namespace
             OrderItem existing = FindOrderItem(itemName);         // find existing item
 
             if (existing != null)                                // if exists
+            {
                 existing.Quantity += quantity;                   // increase quantity
+                existing.Status = "Pending";                     // mark as pending
+            }
             else                                                 // otherwise
-                orderList.Add(new OrderItem(itemName, quantity, price));   // add new item
+            {
+                orderList.Add(new OrderItem(itemName, quantity, price, "Pending"));   // add new item
+            }
 
             qty.Value = 0;                                       // reset quantity
             list.ClearSelected();                                // clear selection
@@ -131,16 +136,16 @@ namespace DeliciosoERistorante                     // project namespace
 
         private void btnRemoveItem_Click(object sender, EventArgs e)   // remove item click
         {
-            int index = lstCurrentOrder.SelectedIndex;           // get selected index
+            int index = lstCurrentOrder.SelectedIndex;                 // get selected index
 
-            if (index < 0 || index >= orderList.Count)           // validate index
+            if (index < 0 || index >= orderList.Count)                 // validate index
             {
                 MessageBox.Show("Please select an item to remove.");   // show message
-                return;                                          // exit
+                return;                                                // exit
             }
 
-            orderList.RemoveAt(index);                           // remove item
-            RefreshOrderListBox();                               // refresh listbox
+            orderList.RemoveAt(index);                                 // remove item
+            RefreshOrderListBox();                                     // refresh listbox
         }
 
         private void btnMenuClear_Click(object sender, EventArgs e)   // clear all click
@@ -151,21 +156,30 @@ namespace DeliciosoERistorante                     // project namespace
 
         private void btnSubmitOrder_Click(object sender, EventArgs e)   // submit order click
         {
-            if (orderList.Count == 0)                            // check empty order
+            bool hasPending = false;                             // track pending items
+
+            foreach (OrderItem item in orderList)                // loop items
             {
-                MessageBox.Show("Please add at least one item before submitting.");   // show message
+                if (item.Status == "Pending")                    // check pending
+                {
+                    item.Status = "Submitted";                   // convert to submitted
+                    hasPending = true;                           // mark found
+                }
+            }
+
+            if (!hasPending)                                     // if nothing to submit
+            {
+                MessageBox.Show("There are no pending items to submit.");   // show message
                 return;                                          // exit
             }
 
             MessageBox.Show("Your order has been submitted!");   // show confirmation
-            ClearForm();                                         // clear form
+            RefreshOrderListBox();                               // refresh listbox
+            ClearSelectionsOnly();                               // clear selections only
         }
 
-        private void ClearForm()                                 // clear form method
+        private void ClearSelectionsOnly()                       // clear selections method
         {
-            orderList.Clear();                                   // clear order list
-            RefreshOrderListBox();                               // refresh listbox
-
             numMainDishes.Value = 0;                             // reset quantities
             numSalads.Value = 0;
             numBeverages.Value = 0;
@@ -185,9 +199,29 @@ namespace DeliciosoERistorante                     // project namespace
                 return;                                          // exit
             }
 
-            frmCheckout checkout = new frmCheckout(new List<OrderItem>(orderList));   // pass copy
+            List<OrderItem> cleanList = BuildCleanList();        // build clean list
+            frmCheckout checkout = new frmCheckout(cleanList);   // pass clean list
             checkout.Show();                                      // show checkout form
             this.Hide();                                          // hide menu form
+        }
+
+        private List<OrderItem> BuildCleanList()                 // build clean list method
+        {
+            Dictionary<string, OrderItem> merged = new Dictionary<string, OrderItem>();   // merged items
+
+            foreach (OrderItem item in orderList)                // loop items
+            {
+                if (!merged.ContainsKey(item.Name))             // if not merged yet
+                {
+                    merged[item.Name] = new OrderItem(item.Name, item.Quantity, item.UnitPrice, "");   // add clean
+                }
+                else                                             // otherwise
+                {
+                    merged[item.Name].Quantity += item.Quantity; // merge quantities
+                }
+            }
+
+            return new List<OrderItem>(merged.Values);           // return merged list
         }
     }
 
@@ -196,12 +230,14 @@ namespace DeliciosoERistorante                     // project namespace
         public string Name { get; set; }                     // item name property
         public int Quantity { get; set; }                    // quantity property
         public double UnitPrice { get; set; }                // unit price property
+        public string Status { get; set; }                   // status property
 
-        public OrderItem(string name, int quantity, double price)   // constructor
+        public OrderItem(string name, int quantity, double price, string status)   // constructor
         {
             Name = name;                                     // assign name
             Quantity = quantity;                             // assign quantity
             UnitPrice = price;                               // assign price
+            Status = status;                                 // assign status
         }
 
         public double LineTotal()                            // calculate line total
@@ -211,7 +247,11 @@ namespace DeliciosoERistorante                     // project namespace
 
         public override string ToString()                    // override ToString
         {
-            return $"{Name} x{Quantity} - {LineTotal():C}";  // formatted string
+            string tag = Status == "Submitted"               // choose tag
+                ? "(Submitted)"                              // submitted tag
+                : "(Pending until submitted)";               // pending tag
+
+            return $"{Name} x{Quantity} - {LineTotal():C} {tag}";   // formatted string
         }
     }
 }
