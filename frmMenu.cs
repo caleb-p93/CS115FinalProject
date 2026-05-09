@@ -1,4 +1,4 @@
-// updated 5.2.26 - Mike - Fully rewritten to match Designer layout 
+// updated 5.9.26 - Mike - corrected button1 name to btnRemoveItem and removed comments next to items prices
 using System;                                      // using System namespace
 using System.Collections.Generic;                  // using generic collections
 using System.Windows.Forms;                        // using Windows Forms namespace
@@ -24,7 +24,7 @@ namespace DeliciosoERistorante                     // project namespace
             btnAddItems.Click += btnAddItems_Click;         // wire add selected items button
             btnSubmitOrder.Click += btnSubmitOrder_Click;   // wire submit order button
             btnMenuClear.Click += btnMenuClear_Click;       // wire clear all button
-            button1.Click += button1_Click;                 // wire remove item button
+            btnRemoveItem.Click += btnRemoveItem_Click;     // wire remove item button
             btnRequestCheck.Click += btnRequestCheck_Click; // wire request check button
         }
 
@@ -35,37 +35,37 @@ namespace DeliciosoERistorante                     // project namespace
 
         private void InitializePrices()            // method to initialize prices
         {
-            prices = new Dictionary<string, double>();   // create dictionary
+            prices = new Dictionary<string, double>();   // menu item prices
 
-            prices["Spaghetti Marinara"] = 11.99;  // price
-            prices["Fettuccine Alfredo"] = 12.99;  // price
-            prices["Lasagna"] = 13.99;             // price
-            prices["Cheese Pizza"] = 10.99;        // price
-            prices["Pepperoni Pizza"] = 11.49;     // price
-            prices["Chicken Parmesan"] = 14.99;    // price
-            prices["Pasta Primavera"] = 11.99;     // price
-            prices["Baked Ziti"] = 12.49;          // price
-            prices["Meat Ravioli"] = 13.49;        // price
-            prices["Shrimp Linguine"] = 15.99;     // price
+            prices["Spaghetti Marinara"] = 11.99;  
+            prices["Fettuccine Alfredo"] = 12.99;  
+            prices["Lasagna"] = 13.99;             
+            prices["Cheese Pizza"] = 10.99;        
+            prices["Pepperoni Pizza"] = 11.49;     
+            prices["Chicken Parmesan"] = 14.99;    
+            prices["Pasta Primavera"] = 11.99;     
+            prices["Baked Ziti"] = 12.49;          
+            prices["Meat Ravioli"] = 13.49;        
+            prices["Shrimp Linguine"] = 15.99;     
 
-            prices["Caesar Salad"] = 7.99;         // price
-            prices["Caprese Salad"] = 8.49;        // price
-            prices["Garden Salad"] = 6.99;         // price
-            prices["Arugula Salad"] = 7.49;        // price
-            prices["Greek Salad"] = 8.99;          // price
-            prices["Antipasto Salad"] = 6.49;      // price
+            prices["Caesar Salad"] = 7.99;         
+            prices["Caprese Salad"] = 8.49;        
+            prices["Garden Salad"] = 6.99;         
+            prices["Arugula Salad"] = 7.49;        
+            prices["Greek Salad"] = 8.99;          
+            prices["Antipasto Salad"] = 6.49;      
 
-            prices["Coffee"] = 2.49;               // price
-            prices["Espresso"] = 1.99;             // price
-            prices["Lemonade"] = 2.99;             // price
-            prices["Iced Tea"] = 2.49;             // price
-            prices["Wine"] = 2.99;                 // price
+            prices["Coffee"] = 2.49;               
+            prices["Espresso"] = 1.99;             
+            prices["Lemonade"] = 2.99;             
+            prices["Iced Tea"] = 2.49;             
+            prices["Wine"] = 2.99;                 
 
-            prices["Tiramisu"] = 6.99;             // price
-            prices["Cannoli"] = 5.99;              // price
-            prices["Panna Cotta"] = 6.49;          // price
-            prices["Gelato"] = 5.49;               // price
-            prices["Cheesecake"] = 7.99;           // price
+            prices["Tiramisu"] = 6.99;             
+            prices["Cannoli"] = 5.99;              
+            prices["Panna Cotta"] = 6.49;          
+            prices["Gelato"] = 5.49;               
+            prices["Cheesecake"] = 7.99;           
         }
 
         private void btnAddItems_Click(object sender, EventArgs e)   // add selected items click
@@ -129,7 +129,7 @@ namespace DeliciosoERistorante                     // project namespace
                 lstCurrentOrder.Items.Add(item.ToString());      // add formatted item
         }
 
-        private void button1_Click(object sender, EventArgs e)   // remove item click
+        private void btnRemoveItem_Click(object sender, EventArgs e)   // remove item click
         {
             int index = lstCurrentOrder.SelectedIndex;           // get selected index
 
