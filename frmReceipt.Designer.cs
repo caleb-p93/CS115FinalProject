@@ -1,4 +1,4 @@
-﻿namespace DeliciosoERistorante
+namespace DeliciosoERistorante
 {
     partial class frmReceipt
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Receipt));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceipt));
             this.lblReceipt = new System.Windows.Forms.Label();
             this.gbxReceipt = new System.Windows.Forms.GroupBox();
             this.lblThankYou = new System.Windows.Forms.Label();
@@ -61,7 +61,7 @@
             this.lblReceipt.AutoSize = true;
             this.lblReceipt.BackColor = System.Drawing.Color.OldLace;
             this.lblReceipt.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReceipt.Location = new System.Drawing.Point(558, 21);
+            this.lblReceipt.Location = new System.Drawing.Point(929, 117);
             this.lblReceipt.Name = "lblReceipt";
             this.lblReceipt.Size = new System.Drawing.Size(129, 44);
             this.lblReceipt.TabIndex = 5;
@@ -92,7 +92,7 @@
             this.gbxReceipt.Controls.Add(this.lblDateTime);
             this.gbxReceipt.Controls.Add(this.lblReceiptName);
             this.gbxReceipt.Controls.Add(this.lblReceiptNum);
-            this.gbxReceipt.Location = new System.Drawing.Point(117, 102);
+            this.gbxReceipt.Location = new System.Drawing.Point(499, 226);
             this.gbxReceipt.Name = "gbxReceipt";
             this.gbxReceipt.Size = new System.Drawing.Size(1005, 595);
             this.gbxReceipt.TabIndex = 6;
@@ -119,6 +119,7 @@
             this.btnSaveReceipt.TabIndex = 26;
             this.btnSaveReceipt.Text = "Save Receipt";
             this.btnSaveReceipt.UseVisualStyleBackColor = false;
+            this.btnSaveReceipt.Click += new System.EventHandler(this.btnSaveReceipt_Click);
             // 
             // txtTotalReceipt
             // 
@@ -303,19 +304,21 @@
             this.lblReceiptNum.TabIndex = 7;
             this.lblReceiptNum.Text = "Receipt Number:";
             // 
-            // Receipt
+            // frmReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1268, 749);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.gbxReceipt);
             this.Controls.Add(this.lblReceipt);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Receipt";
+            this.Name = "frmReceipt";
             this.Text = "Form1";
             this.gbxReceipt.ResumeLayout(false);
             this.gbxReceipt.PerformLayout();
