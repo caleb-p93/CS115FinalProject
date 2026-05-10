@@ -247,6 +247,9 @@ namespace DeliciosoERistorante                     // project namespace
 
         public override string ToString()                    // override ToString
         {
+            if (string.IsNullOrEmpty(Status))                // hide tags for receipts
+                return $"{Name} x{Quantity} - {LineTotal():C}";
+
             string tag = Status == "Submitted"               // choose tag
                 ? "(Submitted)"                              // submitted tag
                 : "(Pending until submitted)";               // pending tag
