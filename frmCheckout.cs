@@ -1,3 +1,11 @@
+/*
+Group Name: 
+Students Names: Michael Roberts, Caleb Perkins, Andy G Mendoza
+Final Project
+Description: This is the checkout section. Ordered items will appear in the list box.  Tax is auto calculated.  Customer can add a tip.  Once "Calculate Total" is pressed, the grand total will be calculated and
+displayed (no tax on tip).  Customre can then select their payemnt of method and input their card info (if applicable).  Pressing the "Submit Payment" button will take them to the receipt page. 
+*/
+
 using System;                                      // using System namespace
 using System.Collections.Generic;                  // using generic collections
 using System.Windows.Forms;                        // using Windows Forms namespace
