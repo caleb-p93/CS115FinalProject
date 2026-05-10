@@ -1,11 +1,16 @@
-// rename class and constructor to frmMain - Mike
+/*
+Group Name: 
+Students Names: Michael Roberts, Caleb Perkins, Andy G Mendoza
+Final Project
+Description:  This is the main splash page for the menu.  You will see the name of the restaraunt and can press a button to enter the menu.
+*/
 
 using System;                                      // using System namespace
 using System.Windows.Forms;                        // using Windows Forms namespace
 
 namespace DeliciosoERistorante                     // project namespace
 {
-    public partial class frmMain : Form          // frmMain class
+    public partial class frmMain : Form          // frmSplash class
     {
         public frmMain()                         // constructor
         {
