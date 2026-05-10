@@ -1,4 +1,4 @@
-﻿namespace DeliciosoERistorante
+namespace DeliciosoERistorante
 {
     partial class frmCheckout
     {
@@ -16,325 +16,349 @@
 
         private void InitializeComponent()                             // initialize components
         {
-            System.ComponentModel.ComponentResourceManager resources = 
-                new System.ComponentModel.ComponentResourceManager(typeof(frmCheckout));   // resource manager
-
-            this.lblYourBill = new System.Windows.Forms.Label();       // label Your Bill
-            this.gbxItemizedBill = new System.Windows.Forms.GroupBox(); // groupbox itemized bill
-            this.btnCalcTotal = new System.Windows.Forms.Button();     // button calculate total
-            this.txtTotal = new System.Windows.Forms.TextBox();        // textbox total
-            this.txtTax = new System.Windows.Forms.TextBox();          // textbox tax
-            this.lblTotal = new System.Windows.Forms.Label();          // label total
-            this.lblNoTaxTip = new System.Windows.Forms.Label();       // label no tax on tip
-            this.txtSubtotal = new System.Windows.Forms.TextBox();     // textbox subtotal
-            this.txtTip = new System.Windows.Forms.TextBox();          // textbox tip
-            this.lblTax = new System.Windows.Forms.Label();            // label tax
-            this.lblTip = new System.Windows.Forms.Label();            // label tip
-            this.lblSubtotal = new System.Windows.Forms.Label();       // label subtotal
-            this.lstItemizedBill = new System.Windows.Forms.ListBox(); // listbox itemized bill
-
-            this.gbxPayment = new System.Windows.Forms.GroupBox();     // groupbox payment
-            this.txtCustName = new System.Windows.Forms.TextBox();     // textbox customer name
-            this.lblCustName = new System.Windows.Forms.Label();       // label customer name
-            this.btnPayment = new System.Windows.Forms.Button();       // button submit payment
-            this.txtPin = new System.Windows.Forms.TextBox();          // textbox pin
-            this.lblPin = new System.Windows.Forms.Label();            // label pin
-            this.txtExpireDate = new System.Windows.Forms.TextBox();   // textbox expiration date
-            this.lblExpireDate = new System.Windows.Forms.Label();     // label expiration date
-            this.txtCardNumber = new System.Windows.Forms.TextBox();   // textbox card number
-            this.lblCardNumber = new System.Windows.Forms.Label();     // label card number
-            this.radDebitCard = new System.Windows.Forms.RadioButton(); // radio debit card
-            this.radCreditCard = new System.Windows.Forms.RadioButton(); // radio credit card
-            this.label1 = new System.Windows.Forms.Label();            // label payment method
-            this.radCash = new System.Windows.Forms.RadioButton();     // radio cash
-
-            this.gbxItemizedBill.SuspendLayout();                      // suspend itemized bill layout
-            this.gbxPayment.SuspendLayout();                           // suspend payment layout
-            this.SuspendLayout();                                      // suspend form layout
-
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCheckout));
+            this.lblYourBill = new System.Windows.Forms.Label();
+            this.gbxItemizedBill = new System.Windows.Forms.GroupBox();
+            this.btnCalcTotal = new System.Windows.Forms.Button();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtTax = new System.Windows.Forms.TextBox();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblNoTaxTip = new System.Windows.Forms.Label();
+            this.txtSubtotal = new System.Windows.Forms.TextBox();
+            this.txtTip = new System.Windows.Forms.TextBox();
+            this.lblTax = new System.Windows.Forms.Label();
+            this.lblTip = new System.Windows.Forms.Label();
+            this.lblSubtotal = new System.Windows.Forms.Label();
+            this.lstItemizedBill = new System.Windows.Forms.ListBox();
+            this.gbxPayment = new System.Windows.Forms.GroupBox();
+            this.txtCustName = new System.Windows.Forms.TextBox();
+            this.lblCustName = new System.Windows.Forms.Label();
+            this.btnPayment = new System.Windows.Forms.Button();
+            this.txtPin = new System.Windows.Forms.TextBox();
+            this.lblPin = new System.Windows.Forms.Label();
+            this.txtExpireDate = new System.Windows.Forms.TextBox();
+            this.lblExpireDate = new System.Windows.Forms.Label();
+            this.txtCardNumber = new System.Windows.Forms.TextBox();
+            this.lblCardNumber = new System.Windows.Forms.Label();
+            this.radDebitCard = new System.Windows.Forms.RadioButton();
+            this.radCreditCard = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radCash = new System.Windows.Forms.RadioButton();
+            this.gbxItemizedBill.SuspendLayout();
+            this.gbxPayment.SuspendLayout();
+            this.SuspendLayout();
+            // 
             // lblYourBill
-            this.lblYourBill.AutoSize = true;                          // autosize
-            this.lblYourBill.BackColor = System.Drawing.Color.OldLace; // background color
-            this.lblYourBill.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold); // font
-            this.lblYourBill.Location = new System.Drawing.Point(550, 24); // location
-            this.lblYourBill.Name = "lblYourBill";                     // name
-            this.lblYourBill.Size = new System.Drawing.Size(146, 44);  // size
-            this.lblYourBill.TabIndex = 4;                             // tab index
-            this.lblYourBill.Text = "Your Bill";                      // text
-
+            // 
+            this.lblYourBill.AutoSize = true;
+            this.lblYourBill.BackColor = System.Drawing.Color.OldLace;
+            this.lblYourBill.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold);
+            this.lblYourBill.Location = new System.Drawing.Point(858, 124);
+            this.lblYourBill.Name = "lblYourBill";
+            this.lblYourBill.Size = new System.Drawing.Size(146, 44);
+            this.lblYourBill.TabIndex = 4;
+            this.lblYourBill.Text = "Your Bill";
+            // 
             // gbxItemizedBill
-            this.gbxItemizedBill.BackColor = System.Drawing.Color.OldLace; // background
-            this.gbxItemizedBill.Controls.Add(this.btnCalcTotal);      // add button
-            this.gbxItemizedBill.Controls.Add(this.txtTotal);          // add total textbox
-            this.gbxItemizedBill.Controls.Add(this.txtTax);            // add tax textbox
-            this.gbxItemizedBill.Controls.Add(this.lblTotal);          // add total label
-            this.gbxItemizedBill.Controls.Add(this.lblNoTaxTip);       // add no tax label
-            this.gbxItemizedBill.Controls.Add(this.txtSubtotal);       // add subtotal textbox
-            this.gbxItemizedBill.Controls.Add(this.txtTip);            // add tip textbox
-            this.gbxItemizedBill.Controls.Add(this.lblTax);            // add tax label
-            this.gbxItemizedBill.Controls.Add(this.lblTip);            // add tip label
-            this.gbxItemizedBill.Controls.Add(this.lblSubtotal);       // add subtotal label
-            this.gbxItemizedBill.Controls.Add(this.lstItemizedBill);   // add listbox
-            this.gbxItemizedBill.Location = new System.Drawing.Point(166, 103); // location
-            this.gbxItemizedBill.Name = "gbxItemizedBill";             // name
-            this.gbxItemizedBill.Size = new System.Drawing.Size(451, 510); // size
-            this.gbxItemizedBill.TabIndex = 6;                         // tab index
-            this.gbxItemizedBill.TabStop = false;                      // tab stop
-            this.gbxItemizedBill.Text = "Itemized Bill";               // text
-
+            // 
+            this.gbxItemizedBill.BackColor = System.Drawing.Color.OldLace;
+            this.gbxItemizedBill.Controls.Add(this.btnCalcTotal);
+            this.gbxItemizedBill.Controls.Add(this.txtTotal);
+            this.gbxItemizedBill.Controls.Add(this.txtTax);
+            this.gbxItemizedBill.Controls.Add(this.lblTotal);
+            this.gbxItemizedBill.Controls.Add(this.lblNoTaxTip);
+            this.gbxItemizedBill.Controls.Add(this.txtSubtotal);
+            this.gbxItemizedBill.Controls.Add(this.txtTip);
+            this.gbxItemizedBill.Controls.Add(this.lblTax);
+            this.gbxItemizedBill.Controls.Add(this.lblTip);
+            this.gbxItemizedBill.Controls.Add(this.lblSubtotal);
+            this.gbxItemizedBill.Controls.Add(this.lstItemizedBill);
+            this.gbxItemizedBill.Location = new System.Drawing.Point(418, 252);
+            this.gbxItemizedBill.Name = "gbxItemizedBill";
+            this.gbxItemizedBill.Size = new System.Drawing.Size(451, 510);
+            this.gbxItemizedBill.TabIndex = 6;
+            this.gbxItemizedBill.TabStop = false;
+            this.gbxItemizedBill.Text = "Itemized Bill";
+            // 
             // btnCalcTotal
-            this.btnCalcTotal.BackColor = System.Drawing.Color.Wheat;  // background
-            this.btnCalcTotal.Location = new System.Drawing.Point(242, 411); // location
-            this.btnCalcTotal.Name = "btnCalcTotal";                   // name
-            this.btnCalcTotal.Size = new System.Drawing.Size(112, 30); // size
-            this.btnCalcTotal.TabIndex = 22;                           // tab index
-            this.btnCalcTotal.Text = "Calculate Total"; // text
-            this.btnCalcTotal.UseVisualStyleBackColor = false;         // use style
-            this.btnCalcTotal.Click += new System.EventHandler(this.btnCalcTotal_Click); // FIXED EVENT HOOKUP
-
+            // 
+            this.btnCalcTotal.BackColor = System.Drawing.Color.Wheat;
+            this.btnCalcTotal.Location = new System.Drawing.Point(242, 411);
+            this.btnCalcTotal.Name = "btnCalcTotal";
+            this.btnCalcTotal.Size = new System.Drawing.Size(112, 30);
+            this.btnCalcTotal.TabIndex = 22;
+            this.btnCalcTotal.Text = "Calculate Total";
+            this.btnCalcTotal.UseVisualStyleBackColor = false;
+            this.btnCalcTotal.Click += new System.EventHandler(this.btnCalcTotal_Click);
+            // 
             // txtTotal
-            this.txtTotal.BackColor = System.Drawing.SystemColors.Window; // background
-            this.txtTotal.Location = new System.Drawing.Point(287, 463); // location
-            this.txtTotal.Name = "txtTotal";                           // name
-            this.txtTotal.ReadOnly = true;                             // readonly
-            this.txtTotal.Size = new System.Drawing.Size(100, 22);     // size
-            this.txtTotal.TabIndex = 7;                                // tab index
-
+            // 
+            this.txtTotal.BackColor = System.Drawing.SystemColors.Window;
+            this.txtTotal.Location = new System.Drawing.Point(287, 463);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(100, 22);
+            this.txtTotal.TabIndex = 7;
+            // 
             // txtTax
-            this.txtTax.BackColor = System.Drawing.SystemColors.Window; // background
-            this.txtTax.Location = new System.Drawing.Point(287, 299); // location
-            this.txtTax.Name = "txtTax";                              // name
-            this.txtTax.ReadOnly = true;                              // readonly
-            this.txtTax.Size = new System.Drawing.Size(100, 22);      // size
-            this.txtTax.TabIndex = 6;                                 // tab index
-
+            // 
+            this.txtTax.BackColor = System.Drawing.SystemColors.Window;
+            this.txtTax.Location = new System.Drawing.Point(287, 299);
+            this.txtTax.Name = "txtTax";
+            this.txtTax.ReadOnly = true;
+            this.txtTax.Size = new System.Drawing.Size(100, 22);
+            this.txtTax.TabIndex = 6;
+            // 
             // lblTotal
-            this.lblTotal.AutoSize = true;                            // autosize
-            this.lblTotal.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold); // font
-            this.lblTotal.Location = new System.Drawing.Point(160, 461); // location
-            this.lblTotal.Name = "lblTotal";                          // name
-            this.lblTotal.Size = new System.Drawing.Size(105, 22);    // size
-            this.lblTotal.TabIndex = 4;                               // tab index
-            this.lblTotal.Text = "Grand Total:";   // text
-
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTotal.Location = new System.Drawing.Point(160, 461);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(105, 22);
+            this.lblTotal.TabIndex = 4;
+            this.lblTotal.Text = "Grand Total:";
+            // 
             // lblNoTaxTip
-            this.lblNoTaxTip.AutoSize = true;                         // autosize
-            this.lblNoTaxTip.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold); // font
-            this.lblNoTaxTip.Location = new System.Drawing.Point(230, 379); // location
-            this.lblNoTaxTip.Name = "lblNoTaxTip";                    // name
-            this.lblNoTaxTip.Size = new System.Drawing.Size(161, 18); // size
-            this.lblNoTaxTip.TabIndex = 9;                            // tab index
-            this.lblNoTaxTip.Text = "(No Tax Applied To Tips)"; // text
-
+            // 
+            this.lblNoTaxTip.AutoSize = true;
+            this.lblNoTaxTip.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblNoTaxTip.Location = new System.Drawing.Point(230, 379);
+            this.lblNoTaxTip.Name = "lblNoTaxTip";
+            this.lblNoTaxTip.Size = new System.Drawing.Size(161, 18);
+            this.lblNoTaxTip.TabIndex = 9;
+            this.lblNoTaxTip.Text = "(No Tax Applied To Tips)";
+            // 
             // txtSubtotal
-            this.txtSubtotal.BackColor = System.Drawing.SystemColors.Window; // background
-            this.txtSubtotal.Location = new System.Drawing.Point(287, 257); // location
-            this.txtSubtotal.Name = "txtSubtotal";                    // name
-            this.txtSubtotal.ReadOnly = true;                        // readonly
-            this.txtSubtotal.Size = new System.Drawing.Size(100, 22); // size
-            this.txtSubtotal.TabIndex = 5;                           // tab index
-
+            // 
+            this.txtSubtotal.BackColor = System.Drawing.SystemColors.Window;
+            this.txtSubtotal.Location = new System.Drawing.Point(287, 257);
+            this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.ReadOnly = true;
+            this.txtSubtotal.Size = new System.Drawing.Size(100, 22);
+            this.txtSubtotal.TabIndex = 5;
+            // 
             // txtTip
-            this.txtTip.Location = new System.Drawing.Point(287, 345); // location
-            this.txtTip.Name = "txtTip";                              // name
-            this.txtTip.Size = new System.Drawing.Size(100, 22);      // size
-            this.txtTip.TabIndex = 8;                                 // tab index
-
+            // 
+            this.txtTip.Location = new System.Drawing.Point(287, 345);
+            this.txtTip.Name = "txtTip";
+            this.txtTip.Size = new System.Drawing.Size(100, 22);
+            this.txtTip.TabIndex = 8;
+            // 
             // lblTax
-            this.lblTax.AutoSize = true;                             // autosize
-            this.lblTax.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold); // font
-            this.lblTax.Location = new System.Drawing.Point(199, 299); // location
-            this.lblTax.Name = "lblTax";                             // name
-            this.lblTax.Size = new System.Drawing.Size(66, 18);      // size
-            this.lblTax.TabIndex = 3;                                // tab index
-            this.lblTax.Text = "Tax 9.5%:"; // text
-
+            // 
+            this.lblTax.AutoSize = true;
+            this.lblTax.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblTax.Location = new System.Drawing.Point(199, 299);
+            this.lblTax.Name = "lblTax";
+            this.lblTax.Size = new System.Drawing.Size(66, 18);
+            this.lblTax.TabIndex = 3;
+            this.lblTax.Text = "Tax 9.5%:";
+            // 
             // lblTip
-            this.lblTip.AutoSize = true;                             // autosize
-            this.lblTip.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold); // font
-            this.lblTip.Location = new System.Drawing.Point(172, 349); // location
-            this.lblTip.Name = "lblTip";                             // name
-            this.lblTip.Size = new System.Drawing.Size(96, 18);      // size
-            this.lblTip.TabIndex = 3;                                // tab index
-            this.lblTip.Text = "Tip Amount $:"; // text
-
+            // 
+            this.lblTip.AutoSize = true;
+            this.lblTip.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblTip.Location = new System.Drawing.Point(172, 349);
+            this.lblTip.Name = "lblTip";
+            this.lblTip.Size = new System.Drawing.Size(96, 18);
+            this.lblTip.TabIndex = 3;
+            this.lblTip.Text = "Tip Amount $:";
+            // 
             // lblSubtotal
-            this.lblSubtotal.AutoSize = true;                        // autosize
-            this.lblSubtotal.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold); // font
-            this.lblSubtotal.Location = new System.Drawing.Point(202, 257); // location
-            this.lblSubtotal.Name = "lblSubtotal";                   // name
-            this.lblSubtotal.Size = new System.Drawing.Size(63, 18); // size
-            this.lblSubtotal.TabIndex = 2;                           // tab index
-            this.lblSubtotal.Text = "Subtotal:"; // text
-
+            // 
+            this.lblSubtotal.AutoSize = true;
+            this.lblSubtotal.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblSubtotal.Location = new System.Drawing.Point(202, 257);
+            this.lblSubtotal.Name = "lblSubtotal";
+            this.lblSubtotal.Size = new System.Drawing.Size(63, 18);
+            this.lblSubtotal.TabIndex = 2;
+            this.lblSubtotal.Text = "Subtotal:";
+            // 
             // lstItemizedBill
-            this.lstItemizedBill.BorderStyle = System.Windows.Forms.BorderStyle.None; // border
-            this.lstItemizedBill.FormattingEnabled = true;             // formatting enabled
-            this.lstItemizedBill.ItemHeight = 16;                      // item height
-            this.lstItemizedBill.Location = new System.Drawing.Point(49, 30); // location
-            this.lstItemizedBill.Name = "lstItemizedBill";             // name
-            this.lstItemizedBill.Size = new System.Drawing.Size(338, 208); // size
-            this.lstItemizedBill.TabIndex = 1;                         // tab index
-
+            // 
+            this.lstItemizedBill.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstItemizedBill.FormattingEnabled = true;
+            this.lstItemizedBill.ItemHeight = 16;
+            this.lstItemizedBill.Location = new System.Drawing.Point(49, 30);
+            this.lstItemizedBill.Name = "lstItemizedBill";
+            this.lstItemizedBill.Size = new System.Drawing.Size(338, 208);
+            this.lstItemizedBill.TabIndex = 1;
+            // 
             // gbxPayment
-            this.gbxPayment.BackColor = System.Drawing.Color.OldLace;  // background
-            this.gbxPayment.Controls.Add(this.txtCustName);            // add textbox
-            this.gbxPayment.Controls.Add(this.lblCustName);            // add label
-            this.gbxPayment.Controls.Add(this.btnPayment);             // add button
-            this.gbxPayment.Controls.Add(this.txtPin);                 // add pin textbox
-            this.gbxPayment.Controls.Add(this.lblPin);                 // add pin label
-            this.gbxPayment.Controls.Add(this.txtExpireDate);          // add expire textbox
-            this.gbxPayment.Controls.Add(this.lblExpireDate);          // add expire label
-            this.gbxPayment.Controls.Add(this.txtCardNumber);          // add card textbox
-            this.gbxPayment.Controls.Add(this.lblCardNumber);          // add card label
-            this.gbxPayment.Controls.Add(this.radDebitCard);           // add debit radio
-            this.gbxPayment.Controls.Add(this.radCreditCard);          // add credit radio
-            this.gbxPayment.Controls.Add(this.label1);                 // add label
-            this.gbxPayment.Controls.Add(this.radCash);                // add cash radio
-            this.gbxPayment.Location = new System.Drawing.Point(677, 103); // location
-            this.gbxPayment.Name = "gbxPayment";                       // name
-            this.gbxPayment.Size = new System.Drawing.Size(451, 441);  // size
-            this.gbxPayment.TabIndex = 10;                             // tab index
-            this.gbxPayment.TabStop = false;                           // tab stop
-            this.gbxPayment.Text = "Payment";                         // text
-
+            // 
+            this.gbxPayment.BackColor = System.Drawing.Color.OldLace;
+            this.gbxPayment.Controls.Add(this.txtCustName);
+            this.gbxPayment.Controls.Add(this.lblCustName);
+            this.gbxPayment.Controls.Add(this.btnPayment);
+            this.gbxPayment.Controls.Add(this.txtPin);
+            this.gbxPayment.Controls.Add(this.lblPin);
+            this.gbxPayment.Controls.Add(this.txtExpireDate);
+            this.gbxPayment.Controls.Add(this.lblExpireDate);
+            this.gbxPayment.Controls.Add(this.txtCardNumber);
+            this.gbxPayment.Controls.Add(this.lblCardNumber);
+            this.gbxPayment.Controls.Add(this.radDebitCard);
+            this.gbxPayment.Controls.Add(this.radCreditCard);
+            this.gbxPayment.Controls.Add(this.label1);
+            this.gbxPayment.Controls.Add(this.radCash);
+            this.gbxPayment.Location = new System.Drawing.Point(1005, 252);
+            this.gbxPayment.Name = "gbxPayment";
+            this.gbxPayment.Size = new System.Drawing.Size(451, 441);
+            this.gbxPayment.TabIndex = 10;
+            this.gbxPayment.TabStop = false;
+            this.gbxPayment.Text = "Payment";
+            // 
             // txtCustName
-            this.txtCustName.BackColor = System.Drawing.SystemColors.Window; // background
-            this.txtCustName.Location = new System.Drawing.Point(67, 193); // location
-            this.txtCustName.Name = "txtCustName";                   // name
-            this.txtCustName.Size = new System.Drawing.Size(298, 22); // size
-            this.txtCustName.TabIndex = 21;                          // tab index
-
+            // 
+            this.txtCustName.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCustName.Location = new System.Drawing.Point(67, 193);
+            this.txtCustName.Name = "txtCustName";
+            this.txtCustName.Size = new System.Drawing.Size(298, 22);
+            this.txtCustName.TabIndex = 21;
+            // 
             // lblCustName
-            this.lblCustName.AutoSize = true;                        // autosize
-            this.lblCustName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold); // font
-            this.lblCustName.Location = new System.Drawing.Point(63, 168); // location
-            this.lblCustName.Name = "lblCustName";                   // name
-            this.lblCustName.Size = new System.Drawing.Size(126, 22); // size
-            this.lblCustName.TabIndex = 20;                          // tab index
-            this.lblCustName.Text = "Name On Card:"; // text
-
+            // 
+            this.lblCustName.AutoSize = true;
+            this.lblCustName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold);
+            this.lblCustName.Location = new System.Drawing.Point(63, 168);
+            this.lblCustName.Name = "lblCustName";
+            this.lblCustName.Size = new System.Drawing.Size(126, 22);
+            this.lblCustName.TabIndex = 20;
+            this.lblCustName.Text = "Name On Card:";
+            // 
             // btnPayment
-            this.btnPayment.BackColor = System.Drawing.Color.Wheat;  // background
-            this.btnPayment.Location = new System.Drawing.Point(164, 371); // location
-            this.btnPayment.Name = "btnPayment";                     // name
-            this.btnPayment.Size = new System.Drawing.Size(128, 36); // size
-            this.btnPayment.TabIndex = 19;                           // tab index
-            this.btnPayment.Text = "Submit Payment"; // text
-            this.btnPayment.UseVisualStyleBackColor = false;         // use style
-            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click); // FIXED EVENT HOOKUP
-
+            // 
+            this.btnPayment.BackColor = System.Drawing.Color.Wheat;
+            this.btnPayment.Location = new System.Drawing.Point(164, 371);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(128, 36);
+            this.btnPayment.TabIndex = 19;
+            this.btnPayment.Text = "Submit Payment";
+            this.btnPayment.UseVisualStyleBackColor = false;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
+            // 
             // txtPin
-            this.txtPin.Location = new System.Drawing.Point(230, 321); // location
-            this.txtPin.Name = "txtPin";                              // name
-            this.txtPin.Size = new System.Drawing.Size(91, 22);       // size
-            this.txtPin.TabIndex = 18;                                // tab index
-
+            // 
+            this.txtPin.Location = new System.Drawing.Point(230, 321);
+            this.txtPin.Name = "txtPin";
+            this.txtPin.Size = new System.Drawing.Size(91, 22);
+            this.txtPin.TabIndex = 18;
+            // 
             // lblPin
-            this.lblPin.AutoSize = true;                              // autosize
-            this.lblPin.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold); // font
-            this.lblPin.Location = new System.Drawing.Point(226, 295); // location
-            this.lblPin.Name = "lblPin";                              // name
-            this.lblPin.Size = new System.Drawing.Size(43, 22);       // size
-            this.lblPin.TabIndex = 17;                                // tab index
-            this.lblPin.Text = "PIN:"; // text
-
+            // 
+            this.lblPin.AutoSize = true;
+            this.lblPin.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold);
+            this.lblPin.Location = new System.Drawing.Point(226, 295);
+            this.lblPin.Name = "lblPin";
+            this.lblPin.Size = new System.Drawing.Size(43, 22);
+            this.lblPin.TabIndex = 17;
+            this.lblPin.Text = "PIN:";
+            // 
             // txtExpireDate
-            this.txtExpireDate.Location = new System.Drawing.Point(67, 321); // location
-            this.txtExpireDate.Name = "txtExpireDate";                 // name
-            this.txtExpireDate.Size = new System.Drawing.Size(91, 22); // size
-            this.txtExpireDate.TabIndex = 16;                          // tab index
-            this.txtExpireDate.Text = "MM/YY";                         // default text
-
+            // 
+            this.txtExpireDate.Location = new System.Drawing.Point(67, 321);
+            this.txtExpireDate.Name = "txtExpireDate";
+            this.txtExpireDate.Size = new System.Drawing.Size(91, 22);
+            this.txtExpireDate.TabIndex = 16;
+            this.txtExpireDate.Text = "MM/YY";
+            // 
             // lblExpireDate
-            this.lblExpireDate.AutoSize = true;                        // autosize
-            this.lblExpireDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold); // font
-            this.lblExpireDate.Location = new System.Drawing.Point(63, 295); // location
-            this.lblExpireDate.Name = "lblExpireDate";                // name
-            this.lblExpireDate.Size = new System.Drawing.Size(131, 22); // size
-            this.lblExpireDate.TabIndex = 15;                         // tab index
-            this.lblExpireDate.Text = "Expiration Date:"; // text
-
+            // 
+            this.lblExpireDate.AutoSize = true;
+            this.lblExpireDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold);
+            this.lblExpireDate.Location = new System.Drawing.Point(63, 295);
+            this.lblExpireDate.Name = "lblExpireDate";
+            this.lblExpireDate.Size = new System.Drawing.Size(131, 22);
+            this.lblExpireDate.TabIndex = 15;
+            this.lblExpireDate.Text = "Expiration Date:";
+            // 
             // txtCardNumber
-            this.txtCardNumber.Location = new System.Drawing.Point(67, 253); // location
-            this.txtCardNumber.Name = "txtCardNumber";                // name
-            this.txtCardNumber.Size = new System.Drawing.Size(298, 22); // size
-            this.txtCardNumber.TabIndex = 14;                         // tab index
-
+            // 
+            this.txtCardNumber.Location = new System.Drawing.Point(67, 253);
+            this.txtCardNumber.Name = "txtCardNumber";
+            this.txtCardNumber.Size = new System.Drawing.Size(298, 22);
+            this.txtCardNumber.TabIndex = 14;
+            // 
             // lblCardNumber
-            this.lblCardNumber.AutoSize = true;                       // autosize
-            this.lblCardNumber.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold); // font
-            this.lblCardNumber.Location = new System.Drawing.Point(63, 228); // location
-            this.lblCardNumber.Name = "lblCardNumber";                // name
-            this.lblCardNumber.Size = new System.Drawing.Size(118, 22); // size
-            this.lblCardNumber.TabIndex = 13;                         // tab index
-            this.lblCardNumber.Text = "Card Number:"; // text
-
+            // 
+            this.lblCardNumber.AutoSize = true;
+            this.lblCardNumber.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold);
+            this.lblCardNumber.Location = new System.Drawing.Point(63, 228);
+            this.lblCardNumber.Name = "lblCardNumber";
+            this.lblCardNumber.Size = new System.Drawing.Size(118, 22);
+            this.lblCardNumber.TabIndex = 13;
+            this.lblCardNumber.Text = "Card Number:";
+            // 
             // radDebitCard
-            this.radDebitCard.AutoSize = true;                        // autosize
-            this.radDebitCard.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold); // font
-            this.radDebitCard.Location = new System.Drawing.Point(135, 127); // location
-            this.radDebitCard.Name = "radDebitCard";                  // name
-            this.radDebitCard.Size = new System.Drawing.Size(111, 26); // size
-            this.radDebitCard.TabIndex = 12;                          // tab index
-            this.radDebitCard.TabStop = true;                         // tab stop
-            this.radDebitCard.Text = "Debit Card";                   // text
-            this.radDebitCard.UseVisualStyleBackColor = true;         // use style
-
+            // 
+            this.radDebitCard.AutoSize = true;
+            this.radDebitCard.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold);
+            this.radDebitCard.Location = new System.Drawing.Point(135, 127);
+            this.radDebitCard.Name = "radDebitCard";
+            this.radDebitCard.Size = new System.Drawing.Size(111, 26);
+            this.radDebitCard.TabIndex = 12;
+            this.radDebitCard.TabStop = true;
+            this.radDebitCard.Text = "Debit Card";
+            this.radDebitCard.UseVisualStyleBackColor = true;
+            // 
             // radCreditCard
-            this.radCreditCard.AutoSize = true;                       // autosize
-            this.radCreditCard.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold); // font
-            this.radCreditCard.Location = new System.Drawing.Point(135, 95); // location
-            this.radCreditCard.Name = "radCreditCard";                // name
-            this.radCreditCard.Size = new System.Drawing.Size(117, 26); // size
-            this.radCreditCard.TabIndex = 11;                         // tab index
-            this.radCreditCard.TabStop = true;                        // tab stop
-            this.radCreditCard.Text = "Credit Card";                 // text
-            this.radCreditCard.UseVisualStyleBackColor = true;        // use style
-
+            // 
+            this.radCreditCard.AutoSize = true;
+            this.radCreditCard.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold);
+            this.radCreditCard.Location = new System.Drawing.Point(135, 95);
+            this.radCreditCard.Name = "radCreditCard";
+            this.radCreditCard.Size = new System.Drawing.Size(117, 26);
+            this.radCreditCard.TabIndex = 11;
+            this.radCreditCard.TabStop = true;
+            this.radCreditCard.Text = "Credit Card";
+            this.radCreditCard.UseVisualStyleBackColor = true;
+            // 
             // label1
-            this.label1.AutoSize = true;                              // autosize
-            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold); // font
-            this.label1.Location = new System.Drawing.Point(83, 30);  // location
-            this.label1.Name = "label1";                              // name
-            this.label1.Size = new System.Drawing.Size(282, 26);      // size
-            this.label1.TabIndex = 10;                                // tab index
-            this.label1.Text = "Select your payment method:"; // text
-
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(83, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(277, 26);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Select your payment method:";
+            // 
             // radCash
-            this.radCash.AutoSize = true;                             // autosize
-            this.radCash.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold); // font
-            this.radCash.Location = new System.Drawing.Point(135, 63); // location
-            this.radCash.Name = "radCash";                            // name
-            this.radCash.Size = new System.Drawing.Size(65, 26);      // size
-            this.radCash.TabIndex = 5;                                // tab index
-            this.radCash.TabStop = true;                              // tab stop
-            this.radCash.Text = "Cash";                               // text
-            this.radCash.UseVisualStyleBackColor = true;              // use style
-
+            // 
+            this.radCash.AutoSize = true;
+            this.radCash.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold);
+            this.radCash.Location = new System.Drawing.Point(135, 63);
+            this.radCash.Name = "radCash";
+            this.radCash.Size = new System.Drawing.Size(65, 26);
+            this.radCash.TabIndex = 5;
+            this.radCash.TabStop = true;
+            this.radCash.Text = "Cash";
+            this.radCash.UseVisualStyleBackColor = true;
+            // 
             // frmCheckout
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F); // autoscale dimensions
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font; // autoscale mode
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;   // background color
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage"))); // background image
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch; // stretch background
-            this.ClientSize = new System.Drawing.Size(1284, 749);       // form size
-            this.Controls.Add(this.gbxPayment);                         // add payment groupbox
-            this.Controls.Add(this.gbxItemizedBill);                    // add itemized bill groupbox
-            this.Controls.Add(this.lblYourBill);                        // add label
-            this.DoubleBuffered = true;                                 // enable double buffering
-            this.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold); // font
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None; // borderless form
-            this.Margin = new System.Windows.Forms.Padding(4);          // margin
-            this.Name = "frmCheckout";                                  // name
-            this.Text = "Checkout";                                     // text
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.gbxPayment);
+            this.Controls.Add(this.gbxItemizedBill);
+            this.Controls.Add(this.lblYourBill);
+            this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Bold);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "frmCheckout";
+            this.Text = "Checkout";
+            this.gbxItemizedBill.ResumeLayout(false);
+            this.gbxItemizedBill.PerformLayout();
+            this.gbxPayment.ResumeLayout(false);
+            this.gbxPayment.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
-            this.gbxItemizedBill.ResumeLayout(false);                   // resume itemized bill layout
-            this.gbxItemizedBill.PerformLayout();                       // perform layout
-            this.gbxPayment.ResumeLayout(false);                        // resume payment layout
-            this.gbxPayment.PerformLayout();                            // perform layout
-            this.ResumeLayout(false);                                   // resume form layout
-            this.PerformLayout();                                       // perform layout
         }
 
         #endregion
