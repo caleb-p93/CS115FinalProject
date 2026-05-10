@@ -1,13 +1,19 @@
-// udpated 5.8.26 - Mike - updated frmSplash to frmMain line 101
+/*
+Group Name: 
+Students Names: Michael Roberts, Caleb Perkins, Andy G Mendoza
+Final Project
+Description:  This is the receipt page.  Once payment is submitted on the checkout form, the customer will be brought here.  It will display customer information on the left and order details with pricing on the
+right.  Customer can save this to a txt file. Once saved, the program goes back the splash page ready for the next customer.  
+*/
 
 using System;                                      // using System namespace
 using System.Collections.Generic;                  // using generic collections
 using System.IO;                                   // using IO namespace
 using System.Windows.Forms;                        // using Windows Forms namespace
 
-namespace DeliciosoERistorante                     // corrected project namespace
+namespace DeliciosoERistorante                     // project namespace
 {
-    public partial class frmReceipt : Form         // corrected class name
+    public partial class frmReceipt : Form         // class name
     {
         private int receiptNumber;                 // receipt number field
         private string customerName;               // customer name field
