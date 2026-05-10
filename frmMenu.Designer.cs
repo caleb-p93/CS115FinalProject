@@ -1,4 +1,3 @@
-// updated 5.9.26 - Mike - corrected button1 naming issue
 namespace DeliciosoERistorante
 {
     partial class frmMenu
@@ -74,7 +73,7 @@ namespace DeliciosoERistorante
             this.gbxMainDishes.Controls.Add(this.numMainDishes);
             this.gbxMainDishes.Controls.Add(this.lblMainDishesQty);
             this.gbxMainDishes.Controls.Add(this.lstMainDishes);
-            this.gbxMainDishes.Location = new System.Drawing.Point(156, 75);
+            this.gbxMainDishes.Location = new System.Drawing.Point(481, 189);
             this.gbxMainDishes.Name = "gbxMainDishes";
             this.gbxMainDishes.Size = new System.Drawing.Size(428, 254);
             this.gbxMainDishes.TabIndex = 0;
@@ -140,7 +139,7 @@ namespace DeliciosoERistorante
             this.groupBox1.Controls.Add(this.numSalads);
             this.groupBox1.Controls.Add(this.lblSaladsQty);
             this.groupBox1.Controls.Add(this.lstSalads);
-            this.groupBox1.Location = new System.Drawing.Point(680, 75);
+            this.groupBox1.Location = new System.Drawing.Point(1005, 189);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(428, 254);
             this.groupBox1.TabIndex = 2;
@@ -187,7 +186,7 @@ namespace DeliciosoERistorante
             this.lblMenuTitle.AutoSize = true;
             this.lblMenuTitle.BackColor = System.Drawing.Color.OldLace;
             this.lblMenuTitle.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMenuTitle.Location = new System.Drawing.Point(460, 18);
+            this.lblMenuTitle.Location = new System.Drawing.Point(785, 132);
             this.lblMenuTitle.Name = "lblMenuTitle";
             this.lblMenuTitle.Size = new System.Drawing.Size(345, 44);
             this.lblMenuTitle.TabIndex = 3;
@@ -201,7 +200,7 @@ namespace DeliciosoERistorante
             this.bgxBeverages.Controls.Add(this.numBeverages);
             this.bgxBeverages.Controls.Add(this.lblBeveragesQty);
             this.bgxBeverages.Controls.Add(this.lstBeverages);
-            this.bgxBeverages.Location = new System.Drawing.Point(156, 349);
+            this.bgxBeverages.Location = new System.Drawing.Point(481, 463);
             this.bgxBeverages.Name = "bgxBeverages";
             this.bgxBeverages.Size = new System.Drawing.Size(428, 193);
             this.bgxBeverages.TabIndex = 2;
@@ -250,7 +249,7 @@ namespace DeliciosoERistorante
             this.gbxDesserts.Controls.Add(this.numDesserts);
             this.gbxDesserts.Controls.Add(this.lblDessertsQty);
             this.gbxDesserts.Controls.Add(this.lstDesserts);
-            this.gbxDesserts.Location = new System.Drawing.Point(680, 349);
+            this.gbxDesserts.Location = new System.Drawing.Point(1005, 463);
             this.gbxDesserts.Name = "gbxDesserts";
             this.gbxDesserts.Size = new System.Drawing.Size(428, 193);
             this.gbxDesserts.TabIndex = 2;
@@ -301,7 +300,7 @@ namespace DeliciosoERistorante
             this.gbxCurrentOrder.Controls.Add(this.btnMenuClear);
             this.gbxCurrentOrder.Controls.Add(this.lstCurrentOrder);
             this.gbxCurrentOrder.Controls.Add(this.btnSubmitOrder);
-            this.gbxCurrentOrder.Location = new System.Drawing.Point(223, 561);
+            this.gbxCurrentOrder.Location = new System.Drawing.Point(548, 675);
             this.gbxCurrentOrder.Name = "gbxCurrentOrder";
             this.gbxCurrentOrder.Size = new System.Drawing.Size(833, 160);
             this.gbxCurrentOrder.TabIndex = 3;
@@ -369,7 +368,7 @@ namespace DeliciosoERistorante
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1268, 749);
+            this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.gbxCurrentOrder);
             this.Controls.Add(this.gbxDesserts);
             this.Controls.Add(this.bgxBeverages);
