@@ -1,5 +1,5 @@
 /*
-Group Name: 
+Group Name: Foundational Devs
 Students Names: Michael Roberts, Caleb Perkins, Andy G Mendoza
 Final Project
 Description: This is the checkout section. Ordered items will appear in the list box.  Tax is auto calculated.  Customer can add a tip.  Once "Calculate Total" is pressed, the grand total will be calculated and
