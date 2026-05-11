@@ -1,5 +1,5 @@
 /*
-Group Name: 
+Group Name: Foundational Devs
 Students Names: Michael Roberts, Caleb Perkins, Andy G Mendoza
 Final Project
 Description:  This is the receipt page.  Once payment is submitted on the checkout form, the customer will be brought here.  It will display customer information on the left and order details with pricing on the
