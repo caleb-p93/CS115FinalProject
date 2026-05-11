@@ -1,5 +1,5 @@
 /*
-Group Name: 
+Group Name: Foundational Devs
 Students Names: Michael Roberts, Caleb Perkins, Andy G Mendoza
 Final Project
 Description:  This is the main splash page for the menu.  You will see the name of the restaraunt and can press a button to enter the menu.
