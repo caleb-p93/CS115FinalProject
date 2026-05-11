@@ -1,5 +1,5 @@
 /*
-Group Name: 
+Group Name: Foundational Devs
 Students Names: Michael Roberts, Caleb Perkins, Andy G Mendoza
 Final Project
 Description:  This is a digital menu.  Customers can interact with it.  It will take them through an ordering and reordering process.  Then to payment, and finally a receipt page where they can save their
