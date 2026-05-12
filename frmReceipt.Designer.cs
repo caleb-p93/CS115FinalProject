@@ -56,6 +56,12 @@
             this.gbxReceipt.SuspendLayout();
             this.SuspendLayout();
             // 
+            // saveReceiptFile
+            // 
+            this.saveReceiptFile.DefaultExt = "txt";
+            this.saveReceiptFile.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            this.saveReceiptFile.AddExtension = true;
+            // 
             // lblReceipt
             // 
             this.lblReceipt.AutoSize = true;
