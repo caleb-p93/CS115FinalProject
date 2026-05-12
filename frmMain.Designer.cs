@@ -1,4 +1,4 @@
-namespace DeliciosoERistorante
+﻿namespace DeliciosoERistorante
 {
     partial class frmMain
     {

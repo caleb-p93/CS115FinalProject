@@ -516,7 +516,7 @@ namespace DeliciosoERistorante
             this.gbxPayment.Controls.Add(this.lblCardNumber);
             this.gbxPayment.Controls.Add(this.radDebitCard);
             this.gbxPayment.Controls.Add(this.radCreditCard);
-            this.gbxPayment.Controls.Add(this.label1);
+            this.gbxPayment.Controls.Add(this.lblPaymentMethod);
             this.gbxPayment.Controls.Add(this.radCash);
             this.gbxPayment.Location = new System.Drawing.Point(1005, 252);
             this.gbxPayment.Name = "gbxPayment";
@@ -630,15 +630,15 @@ namespace DeliciosoERistorante
             this.radCreditCard.Text = "Credit Card";
             this.radCreditCard.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lblPaymentMethod
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(83, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(277, 26);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Select your payment method:";
+            this.lblPaymentMethod.AutoSize = true;
+            this.lblPaymentMethod.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lblPaymentMethod.Location = new System.Drawing.Point(83, 30);
+            this.lblPaymentMethod.Name = "lblPaymentMethod";
+            this.lblPaymentMethod.Size = new System.Drawing.Size(277, 26);
+            this.lblPaymentMethod.TabIndex = 10;
+            this.lblPaymentMethod.Text = "Select your payment method:";
             // 
             // radCash
             // 
@@ -695,7 +695,7 @@ namespace DeliciosoERistorante
         private System.Windows.Forms.GroupBox gbxPayment;              // groupbox payment
         private System.Windows.Forms.RadioButton radDebitCard;         // radio debit card
         private System.Windows.Forms.RadioButton radCreditCard;        // radio credit card
-        private System.Windows.Forms.Label label1;                     // label payment method
+        private System.Windows.Forms.Label lblPaymentMethod;                     // label payment method
         private System.Windows.Forms.RadioButton radCash;              // radio cash
         private System.Windows.Forms.Button btnPayment;                // button submit payment
         private System.Windows.Forms.TextBox txtPin;                   // textbox pin

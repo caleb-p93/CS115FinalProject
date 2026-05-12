@@ -1,4 +1,4 @@
-namespace DeliciosoERistorante
+﻿namespace DeliciosoERistorante
 {
     partial class frmReceipt
     {
@@ -55,6 +55,12 @@ namespace DeliciosoERistorante
             this.saveReceiptFile = new System.Windows.Forms.SaveFileDialog();
             this.gbxReceipt.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // saveReceiptFile
+            // 
+            this.saveReceiptFile.DefaultExt = "txt";
+            this.saveReceiptFile.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            this.saveReceiptFile.AddExtension = true;
             // 
             // lblReceipt
             // 
