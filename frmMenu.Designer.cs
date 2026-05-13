@@ -320,8 +320,7 @@
             // 
             // btnRemoveItem
             // 
-            this.btnRemoveItem.BackColor = System.Drawing.Color.Wheat;
-            this.btnRemoveItem.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                       this.btnRemoveItem.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveItem.Location = new System.Drawing.Point(583, 34);
             this.btnRemoveItem.Name = "btnRemoveItem";
             this.btnRemoveItem.Size = new System.Drawing.Size(114, 34);
@@ -381,6 +380,13 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMenu";
             this.Text = "Menu";
+
+            // ⭐ NEW ADDITIONS FOR PROPORTIONAL RESIZING
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;   // start maximized
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;   // center screen
+            this.Load += new System.EventHandler(this.frmMenu_Load);   // load event for proportional resizing
+            this.Resize += new System.EventHandler(this.frmMenu_Resize);   // resize event for proportional resizing
+
             this.gbxMainDishes.ResumeLayout(false);
             this.gbxMainDishes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMainDishes)).EndInit();
