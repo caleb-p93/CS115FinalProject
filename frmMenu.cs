@@ -15,6 +15,7 @@ How to interact with the menu:
 using System;                                      // using System namespace
 using System.Collections.Generic;                  // using generic collections
 using System.Windows.Forms;                        // using Windows Forms namespace
+using System.Drawing;                              // using drawing namespace for Rectangle and Size
 
 namespace DeliciosoERistorante                     // project namespace
 {
@@ -23,6 +24,9 @@ namespace DeliciosoERistorante                     // project namespace
         private List<OrderItem> orderList;         // list to store all ordered items
         private Dictionary<string, double> prices; // dictionary of item prices
 
+        private Dictionary<Control, Rectangle> originalBounds = new Dictionary<Control, Rectangle>(); // dictionary for proportional resizing
+        private Size originalFormSize;             // store original form size for scaling
+
         public frmMenu()                           // constructor
         {
             InitializeComponent();                 // initialize form components
@@ -30,6 +34,35 @@ namespace DeliciosoERistorante                     // project namespace
             InitializeOrderList();                 // initialize order list
             InitializePrices();                    // initialize prices
             WireEvents();                          // wire button events
+        }
+
+        private void frmMenu_Load(object sender, EventArgs e)   // load event for proportional resizing
+        {
+            originalFormSize = this.Size;          // store original form size
+
+            foreach (Control c in this.Controls)   // loop through controls
+                originalBounds[c] = c.Bounds;      // store original bounds
+        }
+
+        private void frmMenu_Resize(object sender, EventArgs e) // resize event for proportional scaling
+        {
+            if (originalFormSize.Width == 0 || originalFormSize.Height == 0)   // prevent divide by zero
+                return;                                  // exit if invalid
+
+            float xRatio = (float)this.Width / originalFormSize.Width;   // compute width ratio
+            float yRatio = (float)this.Height / originalFormSize.Height; // compute height ratio
+
+            foreach (Control c in this.Controls)         // loop through controls
+            {
+                Rectangle r = originalBounds[c];         // get original bounds
+
+                c.SetBounds(                             // set new proportional bounds
+                    (int)(r.X * xRatio),                 // new X
+                    (int)(r.Y * yRatio),                 // new Y
+                    (int)(r.Width * xRatio),             // new Width
+                    (int)(r.Height * yRatio)             // new Height
+                );
+            }
         }
 
         private void WireEvents()                  // method to wire events
