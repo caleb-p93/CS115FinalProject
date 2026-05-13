@@ -326,6 +326,13 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmReceipt";
             this.Text = "Form1";
+
+            // ⭐ NEW ADDITIONS FOR PROPORTIONAL RESIZING
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;   // start maximized
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;   // center screen
+            this.Load += new System.EventHandler(this.frmReceipt_Load);   // load event for proportional resizing
+            this.Resize += new System.EventHandler(this.frmReceipt_Resize);   // resize event for proportional resizing
+
             this.gbxReceipt.ResumeLayout(false);
             this.gbxReceipt.PerformLayout();
             this.ResumeLayout(false);
@@ -361,3 +368,4 @@
         private System.Windows.Forms.SaveFileDialog saveReceiptFile;
     }
 }
+
