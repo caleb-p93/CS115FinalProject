@@ -76,6 +76,13 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmMain";
             this.Text = "Splash Page";
+
+            // ⭐ NEW ADDITIONS FOR PROPORTIONAL RESIZING
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;   // start maximized
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;   // center screen
+            this.Load += new System.EventHandler(this.frmMain_Load);   // load event for proportional resizing
+            this.Resize += new System.EventHandler(this.frmMain_Resize);   // resize event for proportional resizing
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
