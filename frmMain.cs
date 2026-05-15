@@ -8,6 +8,7 @@ Description:  This is the main splash page for the menu.  You will see the name 
 using System;                                      // using System namespace
 using System.Windows.Forms;                        // using Windows Forms namespace
 using System.Drawing;                              // using drawing namespace for Rectangle and Size
+using System.Collections.Generic;                  // using collection name space for dictionary
 
 namespace DeliciosoERistorante                     // project namespace
 {
